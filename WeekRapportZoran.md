@@ -4,8 +4,8 @@ Student(e):
 
 Overzicht activiteiten
 
-Week 6 (18/03): ..... uren:
-
+Week 6 (18/03): 3 uren:
+de github repository en een project maken, steam api's onderzoeken, een design van de app maken met bijbehorende features
 
 
 Week 7 (25/03): ..... uren:
