@@ -9,7 +9,8 @@ Week 6 (18/03): 3 uren:
 
 
 Week 7 (25/03): ..... uren:
-
+3 uur les: api verder onderzoeken(https://www.steamwebapi.com/steam/api/inventory?key=*apikey*&steam_id=*steamid*), skin klasse aangemaakt, aparte branch gemaakt.
+  er zijn waarschijnlijk 2 api's nodig, 1 voor meeste info, 1 specifiek voor de float en die heeft de inspect link nodig, die komt uit de andere api.
 
 
 Week 8 (15/04): ..... uren:
