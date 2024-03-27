@@ -11,14 +11,15 @@
 
         private void OnCounterClicked(object sender, EventArgs e)
         {
-            count++;
+          
+        }
+        private void OnButton2Clicked(object sender, EventArgs e)
+        {
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
+        }
+        private void OnButton3Clicked(object sender, EventArgs e)
+        {
 
-            SemanticScreenReader.Announce(CounterBtn.Text);
         }
     }
 
