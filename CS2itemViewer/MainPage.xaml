@@ -38,6 +38,7 @@
 
         </Entry>
 
+
         <!-- ScrollView -->
         <ScrollView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5">
             <VerticalStackLayout
@@ -100,16 +101,23 @@
                 WidthRequest="65" 
                 HeightRequest="35" 
                 Margin="0, 0, -25, 0"/>
-        
-        <Button Text="+" 
-                Grid.Row="0" 
-                Grid.Column="3" 
-                HorizontalOptions="End" 
-                WidthRequest="35" 
-                HeightRequest="35" 
-                CornerRadius="3" 
-                VerticalOptions="Center"/>
-        
+
+        <Grid Grid.Row="0" Grid.Column="3" WidthRequest="35" HeightRequest="35" HorizontalOptions="End">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <BoxView Color="Red" Grid.Row="0" Grid.Column="0" WidthRequest="17" HeightRequest="17" />
+            <BoxView Color="Green" Grid.Row="0" Grid.Column="1" WidthRequest="17" HeightRequest="17" />
+            <BoxView Color="Blue" Grid.Row="1" Grid.Column="0" WidthRequest="17" HeightRequest="17" />
+            <BoxView Color="Yellow" Grid.Row="1" Grid.Column="1" WidthRequest="17" HeightRequest="17" />
+        </Grid>
+
         <Button Text="login" 
                 Grid.Row="0" 
                 Grid.Column="4" 
@@ -119,6 +127,8 @@
                 CornerRadius="25"
                 Padding="8,0,8,0"
                 Margin="0, 0, 10, 0"/>
+        
+        
     </Grid>
 
 </ContentPage>
