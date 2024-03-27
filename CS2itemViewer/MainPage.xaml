@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CS2itemViewer.MainPage"
-             Title = "CS2 Item Viewer">
+             Title = "CS2 Item Viewer"
+             >
 
 
 
@@ -17,19 +18,30 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <!-- Label above ScrollView -->
         <Entry
             Placeholder="Search..."
-            Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1"
-            HorizontalOptions="FillAndExpand"
-            VerticalOptions="Center">
+            BackgroundColor="Gray"
+            TextColor="Red"
+            Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            WidthRequest="150"
+            Margin="0, 0, -25, 0"
+            >
+            
+
+
+
         </Entry>
 
         <!-- ScrollView -->
-        <ScrollView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4">
-            <VerticalStackLayout>
+        <ScrollView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5">
+            <VerticalStackLayout
+                >
                 <Image
                     Source="dotnet_bot.png"
                     HeightRequest="185"
@@ -46,13 +58,67 @@
                     Style="{StaticResource SubHeadline}"
                     SemanticProperties.HeadingLevel="Level2"
                     SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
+                
+                <Label
+                    Text="test1"
+                    SemanticProperties.HeadingLevel="Level3"
+                    SemanticProperties.Description="test1" 
+                    Margin="0, 50, 0 , 50 "
+                    HorizontalOptions="Center"/>
+
+                <Label
+                    Text="test1"
+                    SemanticProperties.HeadingLevel="Level3"
+                    SemanticProperties.Description="test1" 
+                    Margin="0, 50, 0 , 50 "
+                    HorizontalOptions="Center"/>
+
+                <Label
+                    Text="test1"
+                    SemanticProperties.HeadingLevel="Level3"
+                    SemanticProperties.Description="test1" 
+                    Margin="0, 50, 0 , 50 "
+                    HorizontalOptions="Center"/>
+
+                <Label
+                    Text="test1"
+                    SemanticProperties.HeadingLevel="Level3"
+                    SemanticProperties.Description="test1" 
+                    HorizontalOptions="Center"/>
+
+
             </VerticalStackLayout>
         </ScrollView>
+        
+        
 
         <!-- Buttons -->
-        <Button Text="Filter" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" />
-        <Button Text="+" Grid.Row="0" Grid.Column="2" HorizontalOptions="Center" />
-        <Button Text="login" Grid.Row="0" Grid.Column="3" HorizontalOptions="Center" />
+        <Button Text="Filter" 
+                Grid.Row="0"
+                Grid.Column="2" 
+                HorizontalOptions="End" 
+                WidthRequest="65" 
+                HeightRequest="35" 
+                Margin="0, 0, -25, 0"/>
+        
+        <Button Text="+" 
+                Grid.Row="0" 
+                Grid.Column="3" 
+                HorizontalOptions="End" 
+                WidthRequest="35" 
+                HeightRequest="35" 
+                CornerRadius="3" 
+                VerticalOptions="Center"/>
+        
+        <Button Text="login" 
+                Grid.Row="0" 
+                Grid.Column="4" 
+                HorizontalOptions="End" 
+                WidthRequest="50" 
+                HeightRequest="50"
+                CornerRadius="25"
+                Padding="8,0,8,0"
+                Margin="0, 0, 10, 0"/>
     </Grid>
 
 </ContentPage>
