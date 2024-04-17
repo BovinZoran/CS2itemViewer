@@ -14,8 +14,8 @@ Week 7 (25/03): 3 uren:
 
 
 Week 8 (15/04): ..... uren:
-
-
+Foto, skin naam(+naam wapen), float, prijs en exterior laten zien per skin voor elke skin in de inventory
+Dus:"foto", StatTrak™ P250 | Cassette, Float: 0.06246274337173, Steam Price: 0,71€, Exterior: Factory New
 
 Week 9 (22/04): ..... uren:
 
