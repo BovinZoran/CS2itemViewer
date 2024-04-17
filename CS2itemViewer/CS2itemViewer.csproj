@@ -48,12 +48,17 @@
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
-
+		<MauiImage Update="Resources\Images\placeholderPicture.png" Resize="True" BaseSize="300,185" /><!-- tijdelijk voor dummy foto als dit weg is, ook files weg doen-->
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
 
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Images\placeHolderPicture.png" />
+	  <None Remove="Resources\Raw\skinDataTest.json" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -63,8 +68,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Model\" />
+	  <Folder Include="Services\" />
 	  <Folder Include="ViewModel\" />
+		<MauiAsset Include="Resources\Raw\skinDataTest.json" LogicalName="skinDataTest.json" /><!-- tijdelijk voor dummy data als dit weg is, ook files weg doen-->
 	</ItemGroup>
 
 </Project>

@@ -15,8 +15,9 @@ namespace CS2itemViewer
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            //builder.Services.AddSingleton<IConnectivity>(Connectivity.Current);// for connectivety checking
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();
