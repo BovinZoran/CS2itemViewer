@@ -72,4 +72,10 @@
 		<MauiAsset Include="Resources\Raw\skinDataTest.json" LogicalName="skinDataTest.json" /><!-- tijdelijk voor dummy data als dit weg is, ook files weg doen-->
 	</ItemGroup>
 
+	<ItemGroup>
+	  <MauiXaml Update="DetailsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>
