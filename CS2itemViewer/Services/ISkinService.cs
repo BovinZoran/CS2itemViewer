@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CS2itemViewerV2.Services
+namespace CS2itemViewer.Services
 {
-    interface ISkinService
+    public interface ISkinService
     {
         Task<List<Skin>?> GetSkins();
     }

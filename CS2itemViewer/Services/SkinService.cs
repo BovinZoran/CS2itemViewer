@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace CS2itemViewerV2.Services
+namespace CS2itemViewer.Services
 {
     public class SkinService : ISkinService
     {
