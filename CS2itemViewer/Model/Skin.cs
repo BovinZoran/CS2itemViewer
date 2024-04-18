@@ -2,18 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace CS2itemViewer.Model
 {
     public class Skin
     {
-        public string image { get; set; } = "";
-        public string marketname { get; set; } = "";
-        //public string name { get; set; } = "";//itemtype+itemname?
-        //public string descriptionText { get; set; } = "";//descriptions, third item, value
-        //public string descriptionFloat { get; set; } = "";//descriptions, first item, value
+        public string Image { get; set; } = "";
+        public string MarketName { get; set; } = "";
+        public string Name { get; set; } = "";//itemtype+itemname?
+        public string DescriptionText { get; set; } = "";//descriptions, third item, value
+
+        public string DescriptionFloat { get; set; } = "";//descriptions, first item, value
+
         //public double itemFloat { get; set; }
-        public double pricelatestsell { get; set; }
+        public double PriceLatestSell { get; set; }
+
+
+    }
+
+    [JsonSerializable(typeof(List<Skin>))]
+    internal sealed partial class SkinContext : JsonSerializerContext
+    {
+
     }
 }

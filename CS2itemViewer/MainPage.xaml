@@ -1,134 +1,61 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CS2itemViewer.MainPage"
-             Title = "CS2 Item Viewer"
-             >
+             xmlns:model="clr-namespace:CS2itemViewer.Model">
 
+    <ScrollView>
+        <StackLayout>
+            <CollectionView>
+                <CollectionView.ItemsSource>
+                    <x:Array Type="{x:Type model:Skin}">
+                        <model:Skin
+                            MarketName="Baboon"
+                            Image="https://raw.githubusercontent.com/jamesmontemagno/app-monkeys/master/baboon.jpg"
+                            Name="Skin Name"
+                            DescriptionFloat="..."
+                            DescriptionText="..."
+                            PriceLatestSell="00.00"/>
+                        <model:Skin
+                            MarketName="Baboon"
+                            Image="https://raw.githubusercontent.com/jamesmontemagno/app-monkeys/master/baboon.jpg"
+                            Name="Skin Name"
+                            DescriptionFloat="..."
+                            DescriptionText="..."
+                            PriceLatestSell="00.00"/>
+                        <model:Skin
+                            MarketName="Baboon"
+                            Image="https://raw.githubusercontent.com/jamesmontemagno/app-monkeys/master/baboon.jpg"
+                            Name="Skin Name"
+                            DescriptionFloat="..."
+                            DescriptionText="..."
+                            PriceLatestSell="00.00"/>
+                    </x:Array>
+                </CollectionView.ItemsSource>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Skin">
+                        <HorizontalStackLayout Padding="10">
+                            <Image Aspect="AspectFill" HeightRequest="100" Source="{Binding Image}" WidthRequest="100" />
+                            <Label VerticalOptions="Center" TextColor="Gray">
+                                <Label.Text>
+                                    <MultiBinding StringFormat="{}{0} | {1}">
+                                        <Binding Path="Name" />
+                                        <Binding Path="Location" />
+                                    </MultiBinding>
+                                </Label.Text>
+                            </Label>
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
-
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-
-        <!-- Label above ScrollView -->
-        <Entry
-            Placeholder="Search..."
-            BackgroundColor="Gray"
-            TextColor="Red"
-            Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
-            HorizontalOptions="Center"
-            VerticalOptions="Center"
-            WidthRequest="150"
-            Margin="0, 0, -25, 0"
-            >
-            
-
-
-
-        </Entry>
-
-
-        <!-- ScrollView -->
-        <ScrollView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5">
-            <VerticalStackLayout
-                >
-                <Image
-                    Source="dotnet_bot.png"
-                    HeightRequest="185"
-                    Aspect="AspectFit"
-                    SemanticProperties.Description="dot net bot in a race car number eight" />
-
-                <Label
-                    Text="Hello, World!"
-                    Style="{StaticResource Headline}"
-                    SemanticProperties.HeadingLevel="Level1" />
-
-                <Label
-                    Text="Welcome to &#10;.NET Multi-platform App UI"
-                    Style="{StaticResource SubHeadline}"
-                    SemanticProperties.HeadingLevel="Level2"
-                    SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
-                
-                <Label
-                    Text="test1"
-                    SemanticProperties.HeadingLevel="Level3"
-                    SemanticProperties.Description="test1" 
-                    Margin="0, 50, 0 , 50 "
-                    HorizontalOptions="Center"/>
-
-                <Label
-                    Text="test1"
-                    SemanticProperties.HeadingLevel="Level3"
-                    SemanticProperties.Description="test1" 
-                    Margin="0, 50, 0 , 50 "
-                    HorizontalOptions="Center"/>
-
-                <Label
-                    Text="test1"
-                    SemanticProperties.HeadingLevel="Level3"
-                    SemanticProperties.Description="test1" 
-                    Margin="0, 50, 0 , 50 "
-                    HorizontalOptions="Center"/>
-
-                <Label
-                    Text="test1"
-                    SemanticProperties.HeadingLevel="Level3"
-                    SemanticProperties.Description="test1" 
-                    HorizontalOptions="Center"/>
-
-
-            </VerticalStackLayout>
-        </ScrollView>
-        
-        
-
-        <!-- Buttons -->
-        <Button Text="Filter" 
-                Grid.Row="0"
-                Grid.Column="2" 
-                HorizontalOptions="End" 
-                WidthRequest="65" 
-                HeightRequest="35" 
-                Margin="0, 0, -25, 0"/>
-
-        <Grid Grid.Row="0" Grid.Column="3" WidthRequest="35" HeightRequest="35" HorizontalOptions="End">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-
-            <BoxView Color="Red" Grid.Row="0" Grid.Column="0" WidthRequest="17" HeightRequest="17" />
-            <BoxView Color="Green" Grid.Row="0" Grid.Column="1" WidthRequest="17" HeightRequest="17" />
-            <BoxView Color="Blue" Grid.Row="1" Grid.Column="0" WidthRequest="17" HeightRequest="17" />
-            <BoxView Color="Yellow" Grid.Row="1" Grid.Column="1" WidthRequest="17" HeightRequest="17" />
-        </Grid>
-
-        <Button Text="login" 
-                Grid.Row="0" 
-                Grid.Column="4" 
-                HorizontalOptions="End" 
-                WidthRequest="50" 
-                HeightRequest="50"
-                CornerRadius="25"
-                Padding="8,0,8,0"
-                Margin="0, 0, 10, 0"/>
-        
-        
-    </Grid>
+            <HorizontalStackLayout Padding="10">
+                <Image Aspect="AspectFill" HeightRequest="100" Source="{Binding Image}" WidthRequest="100" />
+                <VerticalStackLayout VerticalOptions="Center">
+                    <Label Text="{Binding Name}" FontSize="24" TextColor="Gray"/>
+                    <Label Text="{Binding Location}" FontSize="18" TextColor="Gray"/>
+                </VerticalStackLayout>
+            </HorizontalStackLayout>
+        </StackLayout>
+    </ScrollView>
 
 </ContentPage>

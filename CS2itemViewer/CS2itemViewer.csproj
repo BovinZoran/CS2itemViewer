@@ -69,7 +69,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Services\" />
 		<MauiAsset Include="Resources\Raw\skinDataTest.json" LogicalName="skinDataTest.json" /><!-- tijdelijk voor dummy data als dit weg is, ook files weg doen-->
 	</ItemGroup>
 
