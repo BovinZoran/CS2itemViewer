@@ -10,21 +10,21 @@
                     <x:Array Type="{x:Type model:Skin}">
                         <model:Skin
                             MarketName="Baboon"
-                            Image="https://raw.githubusercontent.com/jamesmontemagno/app-monkeys/master/baboon.jpg"
+                            Image="Resources/Images/placeholderpicture.jpg"
                             Name="Skin Name"
                             DescriptionFloat="..."
                             DescriptionText="..."
                             PriceLatestSell="00.00"/>
                         <model:Skin
                             MarketName="Baboon"
-                            Image="https://raw.githubusercontent.com/jamesmontemagno/app-monkeys/master/baboon.jpg"
+                            Image="Resources/Images/placeholderpicture.jpg"
                             Name="Skin Name"
                             DescriptionFloat="..."
                             DescriptionText="..."
                             PriceLatestSell="00.00"/>
                         <model:Skin
                             MarketName="Baboon"
-                            Image="https://raw.githubusercontent.com/jamesmontemagno/app-monkeys/master/baboon.jpg"
+                            Image="Resources/Images/placeholderpicture.jpg"
                             Name="Skin Name"
                             DescriptionFloat="..."
                             DescriptionText="..."
