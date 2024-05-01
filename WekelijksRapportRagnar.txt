@@ -13,13 +13,12 @@ Week 7 (25/03): 3 uren:
   er zijn waarschijnlijk 2 api's nodig, 1 voor meeste info, 1 specifiek voor de float en die heeft de inspect link nodig, die komt uit de andere api.
 
 
-Week 8 (15/04): ..... uren:
-Foto, skin naam(+naam wapen), float, prijs en exterior laten zien per skin voor elke skin in de inventory
+Week 8 (15/04): 3 uren:
+3 uur les :Foto, skin naam(+naam wapen), float, prijs en exterior laten zien per skin voor elke skin in de inventory
 Dus:"foto", StatTrak™ P250 | Cassette, Float: 0.06246274337173, Steam Price: 0,71€, Exterior: Factory New
 
-Week 9 (22/04): ..... uren:
-
-
+Week 9 (22/04): 6 uren:
+6 uur les: items kunnen laten zien. moeten nog opgehaald worden en gefinetuned worden.(wat wel laten zien en wat niet)
 
 Week 10 (29/04): ..... uren:
 
