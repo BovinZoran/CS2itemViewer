@@ -12,7 +12,7 @@
                             MarketName="Baboon"
                             Image="Resources/Images/placeholderpicture.jpg"
                             Name="Skin Name"
-                            DescriptionFloat="..."
+                            DescriptionFloat="hallo dit is test"
                             DescriptionText="..."
                             PriceLatestSell="00.00"/>
                         <model:Skin
