@@ -9,21 +9,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MonkeyApp.ViewModel
+namespace CS2itemViewer.ViewModel
 {
     [QueryProperty(nameof(Skin), "Skin")]
-    public partial class MonkeyDetailsViewModel : BaseViewModel  // <<<<<<<<<<<<<<<<<<<<<< LOOK HERE AGAIN
+    public partial class SkinDetailsViewModel : BaseViewModel
     {
         IMap map;
-        public MonkeyDetailsViewModel(IMap map)
+        public SkinDetailsViewModel(IMap map)
         {
             this.map = map;
-
-
         }
 
         [ObservableProperty]
         Skin? skin;
-
     }
 }

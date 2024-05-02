@@ -4,15 +4,17 @@ using CS2itemViewer;
 using CS2itemViewer.Model;
 using CS2itemViewer.Services;
 using CS2itemViewer.ViewModel;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace MonkeyApp.ViewModel
+namespace CS2itemViewer.ViewModel
 {
     public partial class SkinViewModel : BaseViewModel
     {
@@ -30,46 +32,53 @@ namespace MonkeyApp.ViewModel
 
            this.SkinService = skinService;
            this.connectivity = connectivity;
+            //GetSkins();
         }
 
         [RelayCommand]
-
-        async Task GetMonkeysAsync()
+        public async void GetSkins()
         {
-            if (IsBusy)
-                return;
 
-            try
+            // Define the API endpoint URL
+            string apiUrl = "https://www.steamwebapi.com/steam/api/inventory?key=0BZBWV7TVZUYRB8J&steam_id=76561198269412096";
+
+            // Make an HTTP request to the API
+            using (HttpClient client = new HttpClient())
             {
-                if (connectivity.NetworkAccess != NetworkAccess.Internet)
+                try
                 {
-                    await Shell.Current.DisplayAlert("No connectivity!",
-                        $"Please check internet and try again.", "OK");
-                    return;
+                    HttpResponseMessage response = await client.GetAsync(apiUrl);
+                    response.EnsureSuccessStatusCode(); // Throw an exception if the request fails
+                    string responseBody = await response.Content.ReadAsStringAsync();
+
+                    // Parse the JSON response
+                    JArray items = JArray.Parse(responseBody);
+
+                    // Iterate over each item in the response
+                    foreach (JToken item in items)
+                    {
+                        // Extract the required fields
+                        string marketName = item["marketname"].ToString();
+                        string itemName = item["itemname"].ToString();
+                        double priceLatest = Convert.ToDouble(item["pricelatest"]);
+                        string imageUrl = item["image"].ToString();
+
+                        // Display the extracted fields
+                        Console.WriteLine("Market Name: " + marketName);
+                        Console.WriteLine("Item Name: " + itemName);
+                        Console.WriteLine("Latest Price: $" + priceLatest);
+                        Console.WriteLine("Image URL: " + imageUrl);
+                        Console.WriteLine();
+                    }
                 }
-
-                IsBusy = true;
-                var skins = await SkinService.GetSkins();
-
-                if (skins == null)
-                    return;
-
-                if (Skins.Count != 0)
-                    Skins.Clear();
-
-                foreach (var skin in skins)
-                    Skins.Add(skin);
-
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Unable to get monkeys: {ex.Message}");
-                await Shell.Current.DisplayAlert("Error!", ex.Message, "OK");
-            }
-            finally
-            {
-                IsBusy = false;
-                IsRefreshing = false;
+                catch (HttpRequestException ex)
+                {
+                    Console.WriteLine("Error making HTTP request: " + ex.Message);
+                }
+                catch (JsonException ex)
+                {
+                    Console.WriteLine("Error parsing JSON response: " + ex.Message);
+                }
             }
 
         }

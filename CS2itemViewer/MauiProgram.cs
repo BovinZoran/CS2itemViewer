@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CS2itemViewer.Services;
+using CS2itemViewer.ViewModel;
+using Microsoft.Extensions.Logging;
 
 namespace CS2itemViewer
 {
@@ -15,7 +17,20 @@ namespace CS2itemViewer
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
-            //builder.Services.AddSingleton<IConnectivity>(Connectivity.Current);// for connectivety checking
+            //services
+            builder.Services.AddSingleton<IConnectivity>(Connectivity.Current);
+            builder.Services.AddSingleton<ISkinService,SkinService>();
+            builder.Services.AddSingleton<IMap>(Map.Default);
+
+            //models
+            builder.Services.AddSingleton<SkinViewModel>();
+            builder.Services.AddTransient<SkinDetailsViewModel>();
+            builder.Services.AddSingleton<BaseViewModel>();
+
+            //pages
+            builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddTransient<DetailsPage>();
+
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
