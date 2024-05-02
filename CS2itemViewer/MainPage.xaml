@@ -10,21 +10,21 @@
                     <x:Array Type="{x:Type model:Skin}">
                         <model:Skin
                             MarketName="Baboon"
-                            Image="C:\UCLLMobieleAppsProject\CS2itemViewer\CS2itemViewer\Resources\Images\placeholderpicture.png"
+                            Image="Resources/Images/placeholderpicture.jpg"
+                            Name="Skin Name"
+                            DescriptionFloat="hallo dit is test"
+                            DescriptionText="..."
+                            PriceLatestSell="00.00"/>
+                        <model:Skin
+                            MarketName="Baboon"
+                            Image="Resources/Images/placeholderpicture.jpg"
                             Name="Skin Name"
                             DescriptionFloat="FN"
                             DescriptionText="DescText"
                             PriceLatestSell="00.00"/>
                         <model:Skin
                             MarketName="Baboon"
-                            Image="C:\UCLLMobieleAppsProject\CS2itemViewer\CS2itemViewer\Resources\Images\placeholderpicture.png"
-                            Name="Skin Name"
-                            DescriptionFloat="FN"
-                            DescriptionText="DescText"
-                            PriceLatestSell="00.00"/>
-                        <model:Skin
-                            MarketName="Baboon"
-                            Image="C:\UCLLMobieleAppsProject\CS2itemViewer\CS2itemViewer\Resources\Images\placeholderpicture.png"
+                            Image="Resources/Images/placeholderpicture.jpg"
                             Name="Skin Name"
                             DescriptionFloat="FN"
                             DescriptionText="DescText"  
