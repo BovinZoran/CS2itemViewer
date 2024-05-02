@@ -2,19 +2,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CS2itemViewer.MainPage"
              xmlns:model="clr-namespace:CS2itemViewer.Model"
-             Title="CSitemViewer">
-    
-    
-    
-    
-
+             Title="CSitemViewer"
+             xmlns:viewmodel="clr-namespace:CS2itemViewer.ViewModel">
     <ScrollView>
-        
-         
-        
-
         <StackLayout>
-
             <!-- Navigation Bar -->
             <Grid BackgroundColor="Black" Padding="10" ColumnSpacing="10">
                 <Grid.ColumnDefinitions>
@@ -31,16 +22,7 @@
                 <Button Grid.Column="2" Text="filter" />
                 <Button Grid.Column="3" Text="login" />
             </Grid>
-
-
-
-
             <CollectionView>
-
-
-                
-
-
                 <CollectionView.ItemsSource>
                     <x:Array Type="{x:Type model:Skin}">
                         <model:Skin
@@ -66,9 +48,6 @@
                             PriceLatestSell="00.00"/>
                     </x:Array>
                 </CollectionView.ItemsSource>
-                
-                
-                
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:Skin">
                         <HorizontalStackLayout Padding="10">
@@ -87,25 +66,13 @@
                         </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
-
-
-                
             </CollectionView>
-
-            
-            
-            
             <HorizontalStackLayout Padding="10">
                 <Image Aspect="AspectFill" HeightRequest="100" Source="{Binding Image}" WidthRequest="100" />
                 <VerticalStackLayout VerticalOptions="Center">
-                    <Label Text="{Binding Name}" FontSize="24" TextColor="Gray"/>
-                    <Label Text="{Binding Location}" FontSize="18" TextColor="Gray"/>
+                    <Button Command="{Binding GetSkinsCommand}" Text="Log In" BackgroundColor="#58D68D" TextColor="White" FontAttributes="Bold" CornerRadius="30" WidthRequest="200" Margin="0,15,0,0" ></Button>
                 </VerticalStackLayout>
             </HorizontalStackLayout>
-            
-            
-            
         </StackLayout>
     </ScrollView>
-
 </ContentPage>
