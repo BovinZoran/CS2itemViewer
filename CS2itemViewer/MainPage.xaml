@@ -1,78 +1,170 @@
-﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CS2itemViewer.MainPage"
              xmlns:model="clr-namespace:CS2itemViewer.Model"
-             Title="CSitemViewer"
-             xmlns:viewmodel="clr-namespace:CS2itemViewer.ViewModel">
-    <ScrollView>
-        <StackLayout>
-            <!-- Navigation Bar -->
-            <Grid BackgroundColor="Black" Padding="10" ColumnSpacing="10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <!-- TextBox -->
-                <Entry Grid.Column="0" Placeholder="Search" WidthRequest="150" />
-                <!-- Empty Space -->
-                <BoxView BackgroundColor="Black" Grid.Column="1" />
-                <!-- Buttons -->
-                <Button Grid.Column="2" Text="filter" />
-                <Button Grid.Column="3" Text="login" />
-            </Grid>
-            <CollectionView>
-                <CollectionView.ItemsSource>
-                    <x:Array Type="{x:Type model:Skin}">
-                        <model:Skin
-                            MarketName="skin name"
-                            Image="C:\UCLLMobieleAppsProject\CS2itemViewer\CS2itemViewer\Resources\Images\placeholderpicture.png"
-                            Name="Skin Name"
-                            DescriptionFloat="FN"
-                            DescriptionText="DescText"
-                            PriceLatestSell="00.00"/>
-                        <model:Skin
-                            MarketName="skin name"
-                            Image="C:\UCLLMobieleAppsProject\CS2itemViewer\CS2itemViewer\Resources\Images\placeholderpicture.png"
-                            Name="Skin Name"
-                            DescriptionFloat="FN"
-                            DescriptionText="DescText"
-                            PriceLatestSell="00.00"/>
-                        <model:Skin
-                            MarketName="skin name"
-                            Image="C:\UCLLMobieleAppsProject\CS2itemViewer\CS2itemViewer\Resources\Images\placeholderpicture.png"
-                            Name="Skin Name"
-                            DescriptionFloat="FN"
-                            DescriptionText="DescText"  
-                            PriceLatestSell="00.00"/>
-                    </x:Array>
-                </CollectionView.ItemsSource>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:Skin">
-                        <HorizontalStackLayout Padding="10">
-                            <Image Aspect="AspectFill" HeightRequest="100" Source="{Binding Image}" WidthRequest="100" />
-                            <Label VerticalOptions="Center" TextColor="Gray">
-                                <Label.Text>
-                                    <MultiBinding StringFormat="{}{0} | Market: {1}, Description: {2}, Float: {3}, Price: {4}">
-                                        <Binding Path="Name" />
-                                        <Binding Path="MarketName" />
-                                        <Binding Path="DescriptionText" />
-                                        <Binding Path="DescriptionFloat" />
-                                        <Binding Path="PriceLatestSell" StringFormat="{}{0:F2}" />
-                                    </MultiBinding>
-                                </Label.Text>
-                            </Label>
-                        </HorizontalStackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-            <HorizontalStackLayout Padding="10">
-                <Image Aspect="AspectFill" HeightRequest="100" Source="{Binding Image}" WidthRequest="100" />
-                <VerticalStackLayout VerticalOptions="Center">
-                    <Button Command="{Binding GetSkinsCommand}" Text="Log In" BackgroundColor="#58D68D" TextColor="White" FontAttributes="Bold" CornerRadius="30" WidthRequest="200" Margin="0,15,0,0" ></Button>
-                </VerticalStackLayout>
-            </HorizontalStackLayout>
-        </StackLayout>
-    </ScrollView>
+             Title = "CS2 Item Viewer"
+             >
+
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Label above ScrollView -->
+        <Entry
+            Placeholder="Search..."
+            BackgroundColor="Gray"
+            TextColor="Red"
+            Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            WidthRequest="150"
+            Margin="0, 0, -25, 0"
+            >
+
+
+
+
+        </Entry>
+
+
+        
+          
+                
+                
+            
+                
+
+
+
+            <!-- Buttons -->
+        <Button Text="Filter" 
+                Grid.Row="0"
+                Grid.Column="2" 
+                HorizontalOptions="End" 
+                WidthRequest="65" 
+                HeightRequest="35" 
+                Margin="0, 0, -25, 0"/>
+
+        <Grid Grid.Row="0" Grid.Column="3" WidthRequest="35" HeightRequest="35" HorizontalOptions="End">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <BoxView Color="Red" Grid.Row="0" Grid.Column="0" WidthRequest="17" HeightRequest="17" />
+            <BoxView Color="Green" Grid.Row="0" Grid.Column="1" WidthRequest="17" HeightRequest="17" />
+            <BoxView Color="Blue" Grid.Row="1" Grid.Column="0" WidthRequest="17" HeightRequest="17" />
+            <BoxView Color="Yellow" Grid.Row="1" Grid.Column="1" WidthRequest="17" HeightRequest="17" />
+        </Grid>
+
+        <Button Text="login" 
+                Grid.Row="0" 
+                Grid.Column="4" 
+                HorizontalOptions="End" 
+                WidthRequest="50" 
+                HeightRequest="50"
+                CornerRadius="25"
+                Padding="8,0,8,0"
+                Margin="0, 0, 10, 0"/>
+        
+        
+
+        <CollectionView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5">
+
+
+
+            <CollectionView.ItemsSource>
+                <x:Array Type="{x:Type model:Skin}">
+                    <model:Skin
+                 MarketName="skin name"
+                 Image="C:\UCLLMobieleAppsProject\CS2itemViewer\CS2itemViewer\Resources\Images\placeholderpicture.png"
+                 Name="Skin Name"
+                 DescriptionFloat="FN"
+                 DescriptionText="DescText"
+                PriceLatestSell="00.00"/>
+                    <model:Skin
+                 MarketName="skin name"
+                 Image="C:\UCLLMobieleAppsProject\CS2itemViewer\CS2itemViewer\Resources\Images\placeholderpicture.png"
+                 Name="Skin Name"
+                 DescriptionFloat="FN"
+                 DescriptionText="DescText"
+                 PriceLatestSell="00.00"/>
+                    <model:Skin
+                MarketName="skin name"
+                Image="C:\UCLLMobieleAppsProject\CS2itemViewer\CS2itemViewer\Resources\Images\placeholderpicture.png"
+                Name="Skin Name"
+                DescriptionFloat="FN"
+                DescriptionText="DescText"
+                PriceLatestSell="00.00"/>
+                    <model:Skin
+                MarketName="skin name"
+                Image="C:\UCLLMobieleAppsProject\CS2itemViewer\CS2itemViewer\Resources\Images\placeholderpicture.png"
+                Name="Skin Name"
+                DescriptionFloat="FN"
+                DescriptionText="DescText"
+                PriceLatestSell="00.00"/>
+                    <model:Skin
+                MarketName="skin name"
+                Image="C:\UCLLMobieleAppsProject\CS2itemViewer\CS2itemViewer\Resources\Images\placeholderpicture.png"
+                Name="Skin Name"
+                DescriptionFloat="FN"
+                DescriptionText="DescText"
+                PriceLatestSell="00.00"/>
+                    <model:Skin
+                 MarketName="skin name"
+                 Image="C:\UCLLMobieleAppsProject\CS2itemViewer\CS2itemViewer\Resources\Images\placeholderpicture.png"
+                 Name="Skin Name"
+                 DescriptionFloat="FN"
+                 DescriptionText="DescText"  
+                 PriceLatestSell="00.00"/>
+                </x:Array>
+            </CollectionView.ItemsSource>
+
+
+
+
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Skin">
+                    <HorizontalStackLayout Padding="10">
+                        <Image Aspect="AspectFill" HeightRequest="100" Source="{Binding Image}" WidthRequest="100" />
+                        <Label VerticalOptions="Center" TextColor="Gray">
+                            <Label.Text>
+                                <MultiBinding StringFormat="{}{0} | Market: {1}, Description: {2}, Float: {3}, Price: {4}">
+                                    <Binding Path="Name" />
+                                    <Binding Path="MarketName" />
+                                    <Binding Path="DescriptionText" />
+                                    <Binding Path="DescriptionFloat" />
+                                    <Binding Path="PriceLatestSell" StringFormat="{}{0:F2}" />
+                                </MultiBinding>
+                            </Label.Text>
+                        </Label>
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+
+
+            
+        </CollectionView>
+
+    </Grid>
+
 </ContentPage>
