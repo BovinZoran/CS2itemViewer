@@ -30,7 +30,7 @@ namespace CS2itemViewer.Services
             if (skinList?.Count > 0) { return skinList; }
 
             //var response = await httpClient.GetAsync("https://www.montemagno.com/monkeys.json");
-            var response = await httpClient.GetAsync("https://monkeyfinderapi220240315144750.azurewebsites.net/api/monkeys"); // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< LOOK HERE
+            var response = await httpClient.GetAsync("https://www.steamwebapi.com/steam/api/inventory?key=0BZBWV7TVZUYRB8J&steam_id=76561198269412096"); // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< LOOK HERE  STEAM ID ADAPTABLE MAKEN !!!!!!!!!!!!
 
             if (response.IsSuccessStatusCode)
             {
