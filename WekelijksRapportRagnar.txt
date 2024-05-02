@@ -19,9 +19,10 @@ Dus:"foto", StatTrak™ P250 | Cassette, Float: 0.06246274337173, Steam Price: 0
 
 Week 9 (22/04): 6 uren:
 6 uur les: items kunnen laten zien. moeten nog opgehaald worden en gefinetuned worden.(wat wel laten zien en wat niet)
+kan hard coded item laten zien
 
 Week 10 (29/04): ..... uren:
-
+3 uur les: items worden opgehaald en tijdelijk gedisplayed in de console aan de hand van een tijdelijke knop.
 
 
 Week 11 (06/05): ..... uren:
