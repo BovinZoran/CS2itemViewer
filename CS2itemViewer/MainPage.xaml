@@ -19,15 +19,15 @@
                             MarketName="Baboon"
                             Image="Resources/Images/placeholderpicture.jpg"
                             Name="Skin Name"
-                            DescriptionFloat="..."
-                            DescriptionText="..."
+                            DescriptionFloat="FN"
+                            DescriptionText="DescText"
                             PriceLatestSell="00.00"/>
                         <model:Skin
                             MarketName="Baboon"
                             Image="Resources/Images/placeholderpicture.jpg"
                             Name="Skin Name"
-                            DescriptionFloat="..."
-                            DescriptionText="..."
+                            DescriptionFloat="FN"
+                            DescriptionText="DescText"  
                             PriceLatestSell="00.00"/>
                     </x:Array>
                 </CollectionView.ItemsSource>
@@ -37,15 +37,20 @@
                             <Image Aspect="AspectFill" HeightRequest="100" Source="{Binding Image}" WidthRequest="100" />
                             <Label VerticalOptions="Center" TextColor="Gray">
                                 <Label.Text>
-                                    <MultiBinding StringFormat="{}{0} | {1}">
+                                    <MultiBinding StringFormat="{}{0} | Market: {1}, Description: {2}, Float: {3}, Price: {4}">
                                         <Binding Path="Name" />
-                                        <Binding Path="Location" />
+                                        <Binding Path="MarketName" />
+                                        <Binding Path="DescriptionText" />
+                                        <Binding Path="DescriptionFloat" />
+                                        <Binding Path="PriceLatestSell" StringFormat="{}{0:F2}" />
                                     </MultiBinding>
                                 </Label.Text>
                             </Label>
                         </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
+
+
             </CollectionView>
 
             <HorizontalStackLayout Padding="10">

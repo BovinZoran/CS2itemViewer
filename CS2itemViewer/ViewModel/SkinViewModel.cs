@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CS2itemViewer;
 using CS2itemViewer.Model;
 using CS2itemViewer.Services;
 using CS2itemViewer.ViewModel;
@@ -72,20 +73,20 @@ namespace MonkeyApp.ViewModel
             }
 
         }
-        //[RelayCommand]
-        //async Task GoToDetails(Skin skin)
-        //{
-        //    if (skin == null)
-        //        return;
+        [RelayCommand]
+        async Task GoToDetails(Skin skin)
+        {
+            if (skin == null)
+                return;
 
-        //    await Shell.Current.GoToAsync(nameof(DetailsPage), true, new Dictionary<string, object>
-        //    {
-        //        {"Skin", skin }
-        //    });
-        //}
+            await Shell.Current.GoToAsync(nameof(DetailsPage), true, new Dictionary<string, object>
+            {
+                {"Skin", skin }
+            });
+        }
 
-       
-        
+
+
 
 
 
