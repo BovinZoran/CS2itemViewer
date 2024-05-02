@@ -1,36 +1,74 @@
 ﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CS2itemViewer.MainPage"
-             xmlns:model="clr-namespace:CS2itemViewer.Model">
+             xmlns:model="clr-namespace:CS2itemViewer.Model"
+             Title="CSitemViewer">
+    
+    
+    
+    
 
     <ScrollView>
+        
+         
+        
+
         <StackLayout>
+
+            <!-- Navigation Bar -->
+            <Grid BackgroundColor="Black" Padding="10" ColumnSpacing="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <!-- TextBox -->
+                <Entry Grid.Column="0" Placeholder="Search" WidthRequest="150" />
+                <!-- Empty Space -->
+                <BoxView BackgroundColor="Black" Grid.Column="1" />
+                <!-- Buttons -->
+                <Button Grid.Column="2" Text="filter" />
+                <Button Grid.Column="3" Text="login" />
+            </Grid>
+
+
+
+
             <CollectionView>
+
+
+                
+
+
                 <CollectionView.ItemsSource>
                     <x:Array Type="{x:Type model:Skin}">
                         <model:Skin
-                            MarketName="Baboon"
-                            Image="Resources/Images/placeholderpicture.jpg"
-                            Name="Skin Name"
-                            DescriptionFloat="hallo dit is test"
-                            DescriptionText="..."
-                            PriceLatestSell="00.00"/>
-                        <model:Skin
-                            MarketName="Baboon"
-                            Image="Resources/Images/placeholderpicture.jpg"
+                            MarketName="skin name"
+                            Image="C:\UCLLMobieleAppsProject\CS2itemViewer\CS2itemViewer\Resources\Images\placeholderpicture.png"
                             Name="Skin Name"
                             DescriptionFloat="FN"
                             DescriptionText="DescText"
                             PriceLatestSell="00.00"/>
                         <model:Skin
-                            MarketName="Baboon"
-                            Image="Resources/Images/placeholderpicture.jpg"
+                            MarketName="skin name"
+                            Image="C:\UCLLMobieleAppsProject\CS2itemViewer\CS2itemViewer\Resources\Images\placeholderpicture.png"
+                            Name="Skin Name"
+                            DescriptionFloat="FN"
+                            DescriptionText="DescText"
+                            PriceLatestSell="00.00"/>
+                        <model:Skin
+                            MarketName="skin name"
+                            Image="C:\UCLLMobieleAppsProject\CS2itemViewer\CS2itemViewer\Resources\Images\placeholderpicture.png"
                             Name="Skin Name"
                             DescriptionFloat="FN"
                             DescriptionText="DescText"  
                             PriceLatestSell="00.00"/>
                     </x:Array>
                 </CollectionView.ItemsSource>
+                
+                
+                
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:Skin">
                         <HorizontalStackLayout Padding="10">
@@ -51,8 +89,12 @@
                 </CollectionView.ItemTemplate>
 
 
+                
             </CollectionView>
 
+            
+            
+            
             <HorizontalStackLayout Padding="10">
                 <Image Aspect="AspectFill" HeightRequest="100" Source="{Binding Image}" WidthRequest="100" />
                 <VerticalStackLayout VerticalOptions="Center">
@@ -60,6 +102,9 @@
                     <Label Text="{Binding Location}" FontSize="18" TextColor="Gray"/>
                 </VerticalStackLayout>
             </HorizontalStackLayout>
+            
+            
+            
         </StackLayout>
     </ScrollView>
 
