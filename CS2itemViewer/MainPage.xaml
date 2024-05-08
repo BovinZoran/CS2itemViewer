@@ -3,7 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CS2itemViewer.MainPage"
              xmlns:model="clr-namespace:CS2itemViewer.Model"
+<<<<<<< HEAD
              Title="{Binding Title}"
+=======
+	     xmlns:viewmodel="clr-namespace:CS2itemViewer.ViewModel"
+             x:DataType="viewmodel:SkinViewModel"
+             Title = "CS2 Item Viewer"
+>>>>>>> cf75432e1ad65d82d18eeb039b0f9528436a974b
              >
 
 
@@ -40,10 +46,10 @@
         </Entry>
 
 
-        
-     
 
-            <!-- Buttons -->
+
+
+        <!-- Buttons -->
         <Button Text="Filter" 
                 Grid.Row="0"
                 Grid.Column="2" 
@@ -68,7 +74,8 @@
             <BoxView Color="Yellow" Grid.Row="1" Grid.Column="1" WidthRequest="17" HeightRequest="17" />
         </Grid>
 
-        <Button Text="login" 
+        <Button Command="{Binding GetSkinsCommand}"
+                Text="login" 
                 Grid.Row="0" 
                 Grid.Column="4" 
                 HorizontalOptions="End" 
@@ -77,8 +84,8 @@
                 CornerRadius="25"
                 Padding="8,0,8,0"
                 Margin="0, 0, 10, 0"/>
-        
-        
+
+
 
         <CollectionView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5">
 
@@ -154,10 +161,8 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
 
-
-
-            
         </CollectionView>
+
 
     </Grid>
 
