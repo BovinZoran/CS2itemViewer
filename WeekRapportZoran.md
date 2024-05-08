@@ -30,7 +30,15 @@ Week 10 (29/04): 3 uren:
 - service API aangepast
 
 
-Week 11 (06/05): ..... uren:
+Week 11 (06/05): 7 uren:
+- de binnenkomende info van de skins in object steken zodat we deze kunnen displayen
+- in de main page de bindings toevoegen
+- **tegen gekomen probleem:**
+- requestHideFillUi(null): anchor = null
+- Error making HTTP request: Response status code does not indicate success: 402 (Payment Required).
+
+de code die we gebruikte om deze info op te halen had ik niet aangpast en heb zitten werken in een copy van ons project.
+maar toen het mis liep probeerde ik de originele code te starten werkte deze ook niet meer ookal was hier niets in aangepast
 
 
 
