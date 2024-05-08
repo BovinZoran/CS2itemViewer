@@ -21,21 +21,20 @@ namespace CS2itemViewer.ViewModel
         public ObservableCollection<Skin> Skins { get; } = new();
         ISkinService SkinService;
         IConnectivity connectivity;
-        
-        
+
+        public SkinViewModel(ISkinService skinService, IConnectivity connectivity)
+        {
+            Title = "CS Item Viewer";
+
+           this.SkinService = skinService;
+           this.connectivity = connectivity;
+        }
 
         [ObservableProperty]
         bool isRefreshing;
 
-        public SkinViewModel(ISkinService skinService, IConnectivity connectivity)
-        {
-
-           this.SkinService = skinService;
-           this.connectivity = connectivity;
-            //GetSkins();
-        }
-
         [RelayCommand]
+
         public async void GetSkins()
         {
 
