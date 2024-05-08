@@ -3,16 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CS2itemViewer.MainPage"
              xmlns:model="clr-namespace:CS2itemViewer.Model"
-<<<<<<< HEAD
-             Title="{Binding Title}"
-=======
-	     xmlns:viewmodel="clr-namespace:CS2itemViewer.ViewModel"
+             
+             xmlns:viewmodel="clr-namespace:CS2itemViewer.ViewModel"
              x:DataType="viewmodel:SkinViewModel"
-             Title = "CS2 Item Viewer"
->>>>>>> cf75432e1ad65d82d18eeb039b0f9528436a974b
+             Title="{Binding Title}"
              >
-
-
 
     <Grid>
         <Grid.RowDefinitions>
