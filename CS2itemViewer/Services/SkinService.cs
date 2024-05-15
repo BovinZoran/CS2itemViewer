@@ -20,7 +20,8 @@ namespace CS2itemViewer.Services
         public async Task<List<Skin>?> GetSkins()
         {
             // Define the API endpoint URL
-            string apiUrl = "https://www.steamwebapi.com/steam/api/inventory?key=0BZBWV7TVZUYRB8J&steam_id=76561198269412096";
+            // nog aanpassen dat ook de id kan ingegeven worden
+            string apiUrl = "https://www.steamwebapi.com/steam/api/inventory?key=J1BAN31YCBSEJLLG&steam_id=76561198350557801";
 
             // Use JsonSerializerOptions to handle case insensitivity if needed
             var sourceGenOptions = new JsonSerializerOptions
@@ -71,6 +72,13 @@ namespace CS2itemViewer.Services
                             if (marketName.StartsWith("StatTrak"))
                             {
                                 descriptionText = descriptions[7].GetProperty("value").GetString();
+                            }
+                            else if(marketName.Contains("Case"))
+                            {
+                                descriptionText = "is case";
+                                //hier moet nog nagekeken worden dat alle values vanaf de 3de tem de 2de laatste oftewel "or an Exceedingly Rare Special Item!" in descriptionText komen
+                                //for (int i = 3; descriptions[i].GetProperty("value").GetString().Contains("Exceedingly"); i++)
+
                             }
                             else
                             {
