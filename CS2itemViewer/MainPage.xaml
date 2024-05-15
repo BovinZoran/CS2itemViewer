@@ -84,31 +84,32 @@
                     <StackLayout Padding="10" Spacing="7">
                         <Grid Padding="10" VerticalOptions="Start">
                             <StackLayout>
-                                <Label Text="{Binding MarketName}" />
+                                <Label Text="{Binding MarketName}" HorizontalTextAlignment="Center" FontSize="Medium"  FontAttributes="Bold" TextColor="Yellow"/>
+
                             </StackLayout>
                         </Grid>
 
                         <Grid>
                             <StackLayout>
-                                <Label Text="{Binding ItemName}" />
+                                <Label Text="{Binding ItemName, StringFormat='Item Name: {0}'}" />
                             </StackLayout>
                         </Grid>
 
                         <Grid>
-                            <StackLayout>
-                                <Label Text="{Binding DescriptionFloat}" />
-                            </StackLayout>
+                            <Label Text="{Binding DescriptionFloat}" />
+                        </Grid>
+
+                        <Grid>
+                            
+                                
+                                    <Label Text="{Binding CleanDescriptionText}" />
+                               
+                            
                         </Grid>
 
                         <Grid>
                             <StackLayout>
-                                <Label Text="{Binding CleanDescriptionText}" />
-                            </StackLayout>
-                        </Grid>
-
-                        <Grid>
-                            <StackLayout>
-                                <Label Text="{Binding PriceLatestSell, StringFormat='This is the latest price: {0}'}" />
+                                <Label Text="{Binding PriceLatestSell, StringFormat='This is the latest price: {0} USD'}" FontAttributes="Bold" />
 
                             </StackLayout>
                         </Grid>
@@ -117,7 +118,7 @@
 
                         <Image Aspect="AspectFill" HeightRequest="120" Source="{Binding Image}" WidthRequest="160" />
 
-                        <Grid>
+                        <Grid Margin="0,20,0,0">
                             <!-- Horizontal line -->
                             <BoxView Grid.Row="1" Grid.ColumnSpan="5" HeightRequest="1" BackgroundColor="DarkGray" HorizontalOptions="FillAndExpand" VerticalOptions="End"/>
                         </Grid>
