@@ -42,6 +42,7 @@ maar toen het mis liep probeerde ik de originele code te starten werkte deze ook
 
 
 
-Week 12 (13/05): 3 uren:
-- errors oplossen
+Week 12 (13/05): 6 uren:
+- errors oplossen -> nu kunnen de items displayed worden in de main page
+- main page styling toevoegen
 - database onderzoeken
