@@ -102,7 +102,7 @@
 
                         <Grid>
                             <StackLayout>
-                                <Label Text="{Binding DescriptionText}" />
+                                <Label Text="{Binding CleanDescriptionText}" />
                             </StackLayout>
                         </Grid>
 
@@ -115,11 +115,21 @@
 
 
 
-                        <Image Aspect="AspectFill" HeightRequest="100" Source="{Binding Image}" WidthRequest="100" />
+                        <Image Aspect="AspectFill" HeightRequest="120" Source="{Binding Image}" WidthRequest="160" />
+
+                        <Grid>
+                            <!-- Horizontal line -->
+                            <BoxView Grid.Row="1" Grid.ColumnSpan="5" HeightRequest="1" BackgroundColor="DarkGray" HorizontalOptions="FillAndExpand" VerticalOptions="End"/>
+                        </Grid>
+
+
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
+            
 
         </CollectionView>
+
+        
     </Grid>
 </ContentPage>

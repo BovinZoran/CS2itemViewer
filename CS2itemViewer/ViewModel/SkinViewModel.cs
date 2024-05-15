@@ -5,6 +5,7 @@ using CS2itemViewer.Services;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace CS2itemViewer.ViewModel
@@ -20,6 +21,9 @@ namespace CS2itemViewer.ViewModel
             Title = "CS Item Viewer";
             _skinService = skinService;
             _connectivity = connectivity;
+
+            // Call the GetSkinsCommand command when the ViewModel is constructed
+            GetSkinsCommand.Execute(null);
         }
 
         [ObservableProperty]
@@ -73,5 +77,9 @@ namespace CS2itemViewer.ViewModel
                 { "Skin", skin }
             });
         }
+
+        
     }
+
+
 }

@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+
+using System.Text.RegularExpressions;
 
 namespace CS2itemViewer.Model
 {
@@ -24,7 +27,23 @@ namespace CS2itemViewer.Model
         public string DescriptionFloat { get; set; }
 
         public string DescriptionText { get; set; }
+
+
+
+        // Inside your Skin class or ViewModel
+        public string CleanDescriptionText => CleanseDescriptionText(DescriptionText);
+
+        // Inside your Skin class or ViewModel
+        private string CleanseDescriptionText(string descriptionText)
+        {
+            // Remove HTML tags using regex
+            return Regex.Replace(descriptionText, "<.*?>", string.Empty);
+        }
     }
+
+    
+
+
 
     public class Description
     {
