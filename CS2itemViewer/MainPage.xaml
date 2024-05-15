@@ -3,11 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CS2itemViewer.MainPage"
              xmlns:model="clr-namespace:CS2itemViewer.Model"
-             
              xmlns:viewmodel="clr-namespace:CS2itemViewer.ViewModel"
              x:DataType="viewmodel:SkinViewModel"
-             Title="{Binding Title}"
-             >
+             Title="{Binding Title}">
+
+
 
     <Grid>
         <Grid.RowDefinitions>
@@ -32,20 +32,12 @@
             HorizontalOptions="Center"
             VerticalOptions="Center"
             WidthRequest="150"
-            Margin="0, 0, -25, 0"
-            >
-
-
-
-
+            Margin="0, 0, -25, 0">
         </Entry>
-
-
-
-
 
         <!-- Buttons -->
         <Button Text="Filter" 
+                IsEnabled="{Binding IsNotBusy}"
                 Grid.Row="0"
                 Grid.Column="2" 
                 HorizontalOptions="End" 
@@ -70,7 +62,8 @@
         </Grid>
 
         <Button Command="{Binding GetSkinsCommand}"
-                Text="login" 
+                IsEnabled="{Binding IsNotBusy}"
+                Text="Login" 
                 Grid.Row="0" 
                 Grid.Column="4" 
                 HorizontalOptions="End" 
@@ -80,85 +73,53 @@
                 Padding="8,0,8,0"
                 Margin="0, 0, 10, 0"/>
 
-
-
-        <CollectionView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5">
-
-
-
-            <CollectionView.ItemsSource>
-                <x:Array Type="{x:Type model:Skin}">
-                    <model:Skin
-                 MarketName="skin name"
-                 Image="https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz2v_Nfz5H_uOxh7-Gw_alIITCmGpa7cd4nuz-8oP5jGu5rhc1JjTtLIfEdVQ-YA6G-FbqwOzs05Tp6smdzHdiuCUi5y7YnRG1gB9OOLE50OveFwutvS5J8A"
-                 ItemName="Skin Name"
-                 DescriptionFloat="FN"
-                 DescriptionText="DescText"
-                PriceLatestSell="00.00"/>
-                    <model:Skin
-                 MarketName="skin name"
-                 Image="Resources\Images\placeholderpicture.png"
-                 ItemName="Skin Name"
-                 DescriptionFloat="FN"
-                 DescriptionText="DescText"
-                 PriceLatestSell="00.00"/>
-                    <model:Skin
-                MarketName="skin name"
-                Image="C:\UCLLMobieleAppsProject\CS2itemViewer\CS2itemViewer\Resources\Images\placeholderpicture.png"
-                ItemName="Skin Name"
-                DescriptionFloat="FN"
-                DescriptionText="DescText"
-                PriceLatestSell="00.00"/>
-                    <model:Skin
-                MarketName="skin name"
-                Image="C:\UCLLMobieleAppsProject\CS2itemViewer\CS2itemViewer\Resources\Images\placeholderpicture.png"
-                ItemName="Skin Name"
-                DescriptionFloat="FN"
-                DescriptionText="DescText"
-                PriceLatestSell="00.00"/>
-                    <model:Skin
-                MarketName="skin name"
-                Image="C:\UCLLMobieleAppsProject\CS2itemViewer\CS2itemViewer\Resources\Images\placeholderpicture.png"
-                ItemName="Skin Name"
-                DescriptionFloat="FN"
-                DescriptionText="DescText"
-                PriceLatestSell="00.00"/>
-                    <model:Skin
-                 MarketName="skin name"
-                 Image="C:\UCLLMobieleAppsProject\CS2itemViewer\CS2itemViewer\Resources\Images\placeholderpicture.png"
-                 ItemName="Skin Name"
-                 DescriptionFloat="FN"
-                 DescriptionText="DescText"  
-                 PriceLatestSell="00.00"/>
-                </x:Array>
-            </CollectionView.ItemsSource>
-
-
+        <CollectionView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5"
+                        ItemsSource="{Binding Skins}"
+                        SelectionMode="None">
 
 
 
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:Skin">
-                    <HorizontalStackLayout Padding="10">
+                    <StackLayout Padding="10" Spacing="7">
+                        <Grid Padding="10" VerticalOptions="Start">
+                            <StackLayout>
+                                <Label Text="{Binding MarketName}" />
+                            </StackLayout>
+                        </Grid>
+
+                        <Grid>
+                            <StackLayout>
+                                <Label Text="{Binding ItemName}" />
+                            </StackLayout>
+                        </Grid>
+
+                        <Grid>
+                            <StackLayout>
+                                <Label Text="{Binding DescriptionFloat}" />
+                            </StackLayout>
+                        </Grid>
+
+                        <Grid>
+                            <StackLayout>
+                                <Label Text="{Binding DescriptionText}" />
+                            </StackLayout>
+                        </Grid>
+
+                        <Grid>
+                            <StackLayout>
+                                <Label Text="{Binding PriceLatestSell, StringFormat='This is the latest price: {0}'}" />
+
+                            </StackLayout>
+                        </Grid>
+
+
+
                         <Image Aspect="AspectFill" HeightRequest="100" Source="{Binding Image}" WidthRequest="100" />
-                        <Label VerticalOptions="Center" TextColor="Gray">
-                            <Label.Text>
-                                <MultiBinding StringFormat="{}{0} | Market: {1}, Description: {2}, Float: {3}, Price: {4}">
-                                    <Binding Path="Name" />
-                                    <Binding Path="MarketName" />
-                                    <Binding Path="DescriptionText" />
-                                    <Binding Path="DescriptionFloat" />
-                                    <Binding Path="PriceLatestSell" StringFormat="{}{0:F2}" />
-                                </MultiBinding>
-                            </Label.Text>
-                        </Label>
-                    </HorizontalStackLayout>
+                    </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
 
         </CollectionView>
-
-
     </Grid>
-
 </ContentPage>

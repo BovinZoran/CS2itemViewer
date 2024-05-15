@@ -9,22 +9,29 @@ namespace CS2itemViewer.Model
 {
     public class Skin
     {
-        public string Image { get; set; } = "";
-        public string MarketName { get; set; } = "";
-        public string ItemName { get; set; } = "";//itemtype+itemname?
-        public string DescriptionText { get; set; } = "";//descriptions, third item, value
+        [JsonPropertyName("marketname")]
+        public string MarketName { get; set; }
 
-        public string DescriptionFloat { get; set; } = "";//descriptions, first item, value
+        [JsonPropertyName("image")]
+        public string Image { get; set; }
 
-        //public double itemFloat { get; set; }
+        [JsonPropertyName("itemname")]
+        public string ItemName { get; set; }
+
+        [JsonPropertyName("pricelatestsell")]
         public double PriceLatestSell { get; set; }
 
+        public string DescriptionFloat { get; set; }
 
+        public string DescriptionText { get; set; }
     }
 
-    [JsonSerializable(typeof(List<Skin>))]
-    internal sealed partial class SkinContext : JsonSerializerContext
+    public class Description
     {
+        [JsonPropertyName("type")]
+        public string Type { get; set; }
 
+        [JsonPropertyName("value")]
+        public string Value { get; set; }
     }
 }
