@@ -42,5 +42,6 @@ maar toen het mis liep probeerde ik de originele code te starten werkte deze ook
 
 
 
-Week 12 (13/05): ..... uren:
-
+Week 12 (13/05): 3 uren:
+- errors oplossen
+- database onderzoeken
