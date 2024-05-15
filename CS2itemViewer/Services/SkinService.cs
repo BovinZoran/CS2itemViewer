@@ -68,7 +68,14 @@ namespace CS2itemViewer.Services
                         }
                         if (descriptions.Count > 2)
                         {
-                            descriptionText = descriptions[2].GetProperty("value").GetString();
+                            if (marketName.StartsWith("StatTrak"))
+                            {
+                                descriptionText = descriptions[7].GetProperty("value").GetString();
+                            }
+                            else
+                            {
+                                descriptionText = descriptions[2].GetProperty("value").GetString();
+                            }
                         }
                     }
 
