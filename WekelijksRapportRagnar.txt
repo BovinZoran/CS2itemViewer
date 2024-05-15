@@ -25,8 +25,8 @@ Week 10 (29/04): 3 uren:
 3 uur les: items worden opgehaald en tijdelijk gedisplayed in de console aan de hand van een tijdelijke knop.
 
 
-Week 11 (06/05): .... uren:
-
+Week 11 (06/05): 3 uren:
+code van vorige week terug werkend gekregen
 
 
 Week 12 (13/05): ..... uren:
