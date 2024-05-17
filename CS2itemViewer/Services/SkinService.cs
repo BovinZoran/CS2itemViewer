@@ -48,6 +48,7 @@ namespace CS2itemViewer.Services
                     var image = skinElement.GetProperty("image").GetString();
                     var itemName = skinElement.GetProperty("itemname").GetString();
                     var priceLatestSell = skinElement.GetProperty("pricelatestsell").GetDouble();
+                    var color = skinElement.GetProperty("color").GetString();
 
                     string descriptionFloat = string.Empty;
                     string descriptionText = string.Empty;
@@ -58,6 +59,7 @@ namespace CS2itemViewer.Services
                     Console.WriteLine("Item Name: " + itemName);
                     Console.WriteLine("Latest Price: $" + priceLatestSell);
                     Console.WriteLine("Image URL: " + image);
+                    Console.WriteLine("COLOR ===> " + color);
                     Console.WriteLine();
 
                     if (skinElement.TryGetProperty("descriptions", out JsonElement descriptionsElement) && descriptionsElement.ValueKind == JsonValueKind.Array)
@@ -94,9 +96,10 @@ namespace CS2itemViewer.Services
                         Image = image,
                         ItemName = itemName,
                         PriceLatestSell = priceLatestSell,
+                        Color = color,
                         DescriptionFloat = descriptionFloat,
                         DescriptionText = descriptionText
-                    });
+                    }); 
                 }
 
                 return skinList;

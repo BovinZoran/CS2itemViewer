@@ -84,8 +84,8 @@
                     <StackLayout Padding="10" Spacing="7">
                         <Grid Padding="10" VerticalOptions="Start">
                             <StackLayout>
-                                <Label Text="{Binding MarketName}" HorizontalTextAlignment="Center" FontSize="Medium"  FontAttributes="Bold" TextColor="Yellow"/>
-
+                                <Label Text="{Binding MarketName}" HorizontalTextAlignment="Center" FontSize="Medium"  FontAttributes="Bold" TextColor="{Binding Color}"/>
+                                
                             </StackLayout>
                         </Grid>
 

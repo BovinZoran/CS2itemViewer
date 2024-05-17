@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 
 namespace CS2itemViewer.Model
 {
@@ -23,6 +24,14 @@ namespace CS2itemViewer.Model
 
         [JsonPropertyName("pricelatestsell")]
         public double PriceLatestSell { get; set; }
+
+        private string _color;
+        [JsonProperty("color")]
+        public string Color
+        {
+            get => _color.StartsWith("#") ? _color : $"#{_color}";
+            set => _color = value;
+        }
 
         public string DescriptionFloat { get; set; }
 
