@@ -12,18 +12,14 @@ namespace CS2itemViewer
             BindingContext = viewModel;
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        private void OnImageButtonClicked(object sender, EventArgs e)
         {
-          
-        }
-        private void OnButton2Clicked(object sender, EventArgs e)
-        {
+            // Handle the click event
+            DisplayAlert("Image Button Clicked", "You clicked the image button!", "OK");
 
         }
-        private void OnButton3Clicked(object sender, EventArgs e)
-        {
 
-        }
+
     }
 
 }

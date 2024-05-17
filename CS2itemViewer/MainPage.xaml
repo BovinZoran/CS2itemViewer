@@ -110,13 +110,20 @@
                         <Grid>
                             <StackLayout>
                                 <Label Text="{Binding PriceLatestSell, StringFormat='This is the latest price: {0} USD'}" FontAttributes="Bold" />
-
+                                <Image />
                             </StackLayout>
                         </Grid>
 
 
 
-                        <Image Aspect="AspectFill" HeightRequest="120" Source="{Binding Image}" WidthRequest="160" />
+
+                        <Grid WidthRequest="160" HeightRequest="120">
+                            <Image Source="{Binding Image}" Aspect="AspectFill">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnImageButtonClicked" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
 
                         <Grid Margin="0,20,0,0">
                             <!-- Horizontal line -->
