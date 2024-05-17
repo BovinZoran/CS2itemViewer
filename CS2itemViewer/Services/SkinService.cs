@@ -19,9 +19,12 @@ namespace CS2itemViewer.Services
 
         public async Task<List<Skin>?> GetSkins()
         {
+            //J1BAN31YCBSEJLLG, 35HX3C23UD6M37JF
+            string apiKey = "J1BAN31YCBSEJLLG";
+            string steamID = "76561198350557801";
             // Define the API endpoint URL
             // nog aanpassen dat ook de id kan ingegeven worden
-            string apiUrl = "https://www.steamwebapi.com/steam/api/inventory?key=J1BAN31YCBSEJLLG&steam_id=76561198350557801";
+            string apiUrl = "https://www.steamwebapi.com/steam/api/inventory?key=" + apiKey + "&steam_id=" + steamID;
 
             // Use JsonSerializerOptions to handle case insensitivity if needed
             var sourceGenOptions = new JsonSerializerOptions
