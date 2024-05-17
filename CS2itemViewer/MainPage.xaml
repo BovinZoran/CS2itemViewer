@@ -96,7 +96,7 @@
                         </Grid>
 
                         <Grid>
-                            <Label Text="{Binding DescriptionFloat}" />
+                            <Label Text="{Binding CleanDescriptionFloat}" />
                         </Grid>
 
                         <Grid>
