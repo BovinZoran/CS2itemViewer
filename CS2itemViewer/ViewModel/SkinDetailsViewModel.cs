@@ -1,26 +1,33 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
 using CS2itemViewer.Model;
-using CS2itemViewer.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CS2itemViewer.ViewModel
 {
-    [QueryProperty(nameof(Skin), "Skin")]
     public partial class SkinDetailsViewModel : BaseViewModel
     {
-        IMap map;
-        public SkinDetailsViewModel(IMap map)
+        private Skin? _skin;
+
+        public Skin? Skin
         {
-            this.map = map;
+            get => _skin;
+            set => SetProperty(ref _skin, value);
         }
 
-        [ObservableProperty]
-        Skin? skin;
+        public string MarketName => Skin?.MarketName ?? "";
+        public string Image => Skin?.Image ?? "";
+        public string ItemName => Skin?.ItemName ?? "";
+        public double PriceLatestSell => Skin?.PriceLatestSell ?? 0;
+        public string Color => Skin?.Color ?? "";
+        public string DescriptionFloat => Skin?.CleanDescriptionFloat ?? "";
+        public string DescriptionText => Skin?.CleanDescriptionText ?? "";
+
+        public SkinDetailsViewModel()
+        {
+        }
+
+        public SkinDetailsViewModel(Skin skin)
+        {
+            Skin = skin;
+        }
     }
 }

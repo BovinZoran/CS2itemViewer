@@ -1,4 +1,5 @@
-﻿using CS2itemViewer.ViewModel;
+﻿using CS2itemViewer.Model;
+using CS2itemViewer.ViewModel;
 
 namespace CS2itemViewer
 {
@@ -10,14 +11,23 @@ namespace CS2itemViewer
         {
             InitializeComponent();
             BindingContext = viewModel;
+
+
         }
 
-        private void OnImageButtonClicked(object sender, EventArgs e)
+
+        private async void OnImageTapped(object sender, EventArgs e)
         {
-            // Handle the click event
-            DisplayAlert("Image Button Clicked", "You clicked the image button!", "OK");
+            // Get the tapped skin object
+            var tappedSkin = (sender as Image)?.BindingContext as Skin;
 
+            if (tappedSkin != null)
+            {
+                // Navigate to the DetailsPage and pass the skin object as a parameter
+                await Navigation.PushAsync(new DetailsPage(new SkinDetailsViewModel(tappedSkin)));
+            }
         }
+
 
 
     }

@@ -14,7 +14,7 @@ namespace CS2itemViewer.ViewModel
         bool isBusy;
 
         [ObservableProperty]
-        string title = "CS2 item Viewer";
+        string title = "";
 
         public bool IsNotBusy => !IsBusy;
     }

@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace CS2itemViewer.ViewModel
 {
@@ -18,7 +19,7 @@ namespace CS2itemViewer.ViewModel
 
         public SkinViewModel(ISkinService skinService, IConnectivity connectivity)
         {
-            Title = "CS Item Viewer";
+            Title = "CS2 item Viewer";
             _skinService = skinService;
             _connectivity = connectivity;
 

@@ -26,8 +26,8 @@
         <!-- Label above ScrollView -->
         <Entry
             Placeholder="Search..."
-            BackgroundColor="Gray"
-            TextColor="Red"
+            BackgroundColor="#2B2B2B"
+            TextColor="White"
             Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
             HorizontalOptions="Center"
             VerticalOptions="Center"
@@ -45,7 +45,7 @@
                 HeightRequest="35" 
                 Margin="0, 0, -25, 0"/>
 
-        <Grid Grid.Row="0" Grid.Column="3" WidthRequest="35" HeightRequest="35" HorizontalOptions="End">
+        <!--<Grid Grid.Row="0" Grid.Column="3" WidthRequest="35" HeightRequest="35" HorizontalOptions="End">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -59,7 +59,7 @@
             <BoxView Color="Green" Grid.Row="0" Grid.Column="1" WidthRequest="17" HeightRequest="17" />
             <BoxView Color="Blue" Grid.Row="1" Grid.Column="0" WidthRequest="17" HeightRequest="17" />
             <BoxView Color="Yellow" Grid.Row="1" Grid.Column="1" WidthRequest="17" HeightRequest="17" />
-        </Grid>
+        </Grid>-->
 
         <Button Command="{Binding GetSkinsCommand}"
                 IsEnabled="{Binding IsNotBusy}"
@@ -89,7 +89,7 @@
                             </StackLayout>
                         </Grid>
 
-                        <Grid>
+                        <!--<Grid>
                             <StackLayout>
                                 <Label Text="{Binding ItemName, StringFormat='Item Name: {0}'}" />
                             </StackLayout>
@@ -105,11 +105,11 @@
                                     <Label Text="{Binding CleanDescriptionText}" />
                                
                             
-                        </Grid>
+                        </Grid>-->
 
                         <Grid>
                             <StackLayout>
-                                <Label Text="{Binding PriceLatestSell, StringFormat='This is the latest price: {0} USD'}" FontAttributes="Bold" />
+                                <Label Text="{Binding PriceLatestSell, StringFormat='Latest selling price: {0} USD'}" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
                                 <Image />
                             </StackLayout>
                         </Grid>
@@ -120,7 +120,7 @@
                         <Grid WidthRequest="160" HeightRequest="120">
                             <Image Source="{Binding Image}" Aspect="AspectFill">
                                 <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OnImageButtonClicked" />
+                                    <TapGestureRecognizer Tapped="OnImageTapped" />
                                 </Image.GestureRecognizers>
                             </Image>
                         </Grid>

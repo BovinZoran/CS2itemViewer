@@ -2,11 +2,85 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CS2itemViewer.DetailsPage"
+             xmlns:model="clr-namespace:CS2itemViewer.Model"
+             xmlns:viewmodel="clr-namespace:CS2itemViewer.ViewModel"
+             x:DataType="viewmodel:SkinDetailsViewModel"
              Title="DetailsPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!--<Label Text="{Binding MarketName}" />
+        <Label Text="{Binding ItemName}" />
+        <Label Text="{Binding DescriptionFloat}" />
+        <Label Text="{Binding DescriptionText}" />
+        <Label Text="{Binding PriceLatestSell, StringFormat='This is the latest price: {0} USD'}" />-->
+
+
+        <ScrollView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5">
+
+
+
+            <StackLayout Padding="10" Spacing="7">
+                <Grid Padding="10" VerticalOptions="Start">
+                    <StackLayout>
+                        <Label Text="{Binding MarketName}" HorizontalTextAlignment="Center" FontSize="Medium"  FontAttributes="Bold" TextColor="{Binding Color}"/>
+
+                    </StackLayout>
+                </Grid>
+
+                <Grid>
+                    <StackLayout>
+                        <Label Text="{Binding ItemName, StringFormat='Item Name: {0}'}" />
+                    </StackLayout>
+                </Grid>
+
+                <Grid>
+                    <Label Text="{Binding DescriptionFloat}" />
+                </Grid>
+
+                <Grid>
+
+
+                    <Label Text="{Binding DescriptionText}" />
+
+
+                </Grid>
+
+                <Grid>
+                    <StackLayout>
+                        <Label Text="{Binding PriceLatestSell, StringFormat='This is the latest price: {0} USD'}" FontAttributes="Bold" />
+                        <Image />
+                    </StackLayout>
+                </Grid>
+
+
+
+
+                <Grid WidthRequest="420" HeightRequest="300">
+                    <Image Source="{Binding Image}" Aspect="AspectFill">
+
+                    </Image>
+                </Grid>
+
+                
+
+
+            </StackLayout>
+
+
+        </ScrollView>
+
+
+    </Grid>
 </ContentPage>
