@@ -42,7 +42,10 @@ maar toen het mis liep probeerde ik de originele code te starten werkte deze ook
 
 
 
-Week 12 (13/05): 6 uren:
+Week 12 (13/05): 12 uren:
 - errors oplossen -> nu kunnen de items displayed worden in de main page
 - main page styling toevoegen
 - database onderzoeken
+- details page styling aangepas
+- details page kan nu data van geselecteerde skin tonen
+- 
