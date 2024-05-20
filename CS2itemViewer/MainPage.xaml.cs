@@ -37,6 +37,14 @@ namespace CS2itemViewer
             }
         }
 
+        private void OnLoginButtonClicked(object sender, EventArgs e)
+        {
+           
+            // Toggle the visibility of the login menu
+            LoginMenuContainer.IsVisible = !LoginMenuContainer.IsVisible;
+        }
+
+        
 
 
 

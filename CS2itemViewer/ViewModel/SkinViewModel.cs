@@ -90,12 +90,15 @@ namespace CS2itemViewer.ViewModel
                 Skins.Clear();
                 foreach (var skin in allSkins)
                 {
-                    Skins.Add(skin);
+                    if (IsSkinVisible(skin))
+                    {
+                        Skins.Add(skin);
+                    }
                 }
             }
             else
             {
-                var filteredSkins = allSkins.Where(skin => skin.MarketName.Contains(SearchText, StringComparison.OrdinalIgnoreCase)).ToList();
+                var filteredSkins = allSkins.Where(skin => skin.MarketName.Contains(SearchText, StringComparison.OrdinalIgnoreCase) && IsSkinVisible(skin)).ToList();
                 Skins.Clear();
                 foreach (var skin in filteredSkins)
                 {
@@ -103,5 +106,131 @@ namespace CS2itemViewer.ViewModel
                 }
             }
         }
+
+        // Color filter properties
+        private bool _isConsumerGradeChecked = true;
+        private bool _isIndustrialGradeChecked = true;
+        private bool _isHighGradeChecked = true;
+        private bool _isRestrictedChecked = true;
+        private bool _isClassifiedChecked = true;
+        private bool _isCovertChecked = true;
+        private bool _isRareSpecialChecked = true;
+        private bool _isContrabandChecked = true;
+
+        public bool IsConsumerGradeChecked
+        {
+            get => _isConsumerGradeChecked;
+            set
+            {
+                SetProperty(ref _isConsumerGradeChecked, value);
+                FilterSkins();
+            }
+        }
+
+        public bool IsIndustrialGradeChecked
+        {
+            get => _isIndustrialGradeChecked;
+            set
+            {
+                SetProperty(ref _isIndustrialGradeChecked, value);
+                FilterSkins();
+            }
+        }
+
+        public bool IsHighGradeChecked
+        {
+            get => _isHighGradeChecked;
+            set
+            {
+                SetProperty(ref _isHighGradeChecked, value);
+                FilterSkins();
+            }
+        }
+
+        public bool IsRestrictedChecked
+        {
+            get => _isRestrictedChecked;
+            set
+            {
+                SetProperty(ref _isRestrictedChecked, value);
+                FilterSkins();
+            }
+        }
+
+        public bool IsClassifiedChecked
+        {
+            get => _isClassifiedChecked;
+            set
+            {
+                SetProperty(ref _isClassifiedChecked, value);
+                FilterSkins();
+            }
+        }
+
+        public bool IsCovertChecked
+        {
+            get => _isCovertChecked;
+            set
+            {
+                SetProperty(ref _isCovertChecked, value);
+                FilterSkins();
+            }
+        }
+
+        public bool IsRareSpecialChecked
+        {
+            get => _isRareSpecialChecked;
+            set
+            {
+                SetProperty(ref _isRareSpecialChecked, value);
+                FilterSkins();
+            }
+        }
+
+        public bool IsContrabandChecked
+        {
+            get => _isContrabandChecked;
+            set
+            {
+                SetProperty(ref _isContrabandChecked, value);
+                FilterSkins();
+            }
+        }
+
+
+
+        private bool _isFilterMenuVisible;
+        public bool IsFilterMenuVisible
+        {
+            get => _isFilterMenuVisible;
+            set => SetProperty(ref _isFilterMenuVisible, value);
+        }
+
+        public ICommand ShowFilterMenuCommand => new Command(ShowFilterMenu);
+
+        private void ShowFilterMenu()
+        {
+            IsFilterMenuVisible = !IsFilterMenuVisible;
+        }
+
+
+        bool IsSkinVisible(Skin skin)
+        {
+            if ((IsConsumerGradeChecked && skin.Color == "#b0c3d9") ||
+                (IsIndustrialGradeChecked && skin.Color == "#5e98d9") ||
+                (IsHighGradeChecked && skin.Color == "#4b69ff") ||
+                (IsRestrictedChecked && skin.Color == "#8847ff") ||
+                (IsClassifiedChecked && skin.Color == "#d32ce6") ||
+                (IsCovertChecked && skin.Color == "#eb4b4b") ||
+                (IsRareSpecialChecked && skin.Color == "#caac05") ||
+                (IsContrabandChecked && skin.Color == "#f1ae35"))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+
     }
 }

@@ -7,10 +7,9 @@
              x:DataType="viewmodel:SkinViewModel"
              Title="{Binding Title}">
 
-
-
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
@@ -24,45 +23,112 @@
         </Grid.ColumnDefinitions>
 
         <!-- Label above ScrollView -->
-        <Entry
-    Placeholder="Search..."
-    BackgroundColor="#2B2B2B"
-    TextColor="White"
-    Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
-    HorizontalOptions="Center"
-    VerticalOptions="Center"
-    WidthRequest="150"
-    Margin="0, 0, -25, 0"
-    Text="{Binding SearchText, Mode=TwoWay}"
-    TextChanged="OnSearchTextChanged">
+        <Entry Placeholder="Search..."
+               BackgroundColor="#2B2B2B"
+               TextColor="White"
+               Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               WidthRequest="150"
+               Margin="0, 0, -25, 0"
+               Text="{Binding SearchText, Mode=TwoWay}"
+               TextChanged="OnSearchTextChanged">
         </Entry>
 
-        <!-- Buttons -->
+        <!-- Filter button -->
         <Button Text="Filter" 
-                IsEnabled="{Binding IsNotBusy}"
-                Grid.Row="0"
-                Grid.Column="2" 
-                HorizontalOptions="End" 
-                WidthRequest="65" 
-                HeightRequest="35" 
-                Margin="0, 0, -25, 0"/>
+        Command="{Binding ShowFilterMenuCommand}"
+        IsEnabled="{Binding IsNotBusy}"
+        HorizontalOptions="End" 
+        WidthRequest="65" 
+        HeightRequest="35" 
+        Margin="0, 0, -25, 0"
+        Grid.Row="0" Grid.Column="2"/>
 
-        <!--<Grid Grid.Row="0" Grid.Column="3" WidthRequest="35" HeightRequest="35" HorizontalOptions="End">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
+        <!-- Filter menu -->
+        <StackLayout x:Name="FilterMenuContainer" 
+             Grid.Row="1" 
+             Grid.Column="0" 
+             Grid.ColumnSpan="5"
+             Margin="0,5,0,0"
+             BackgroundColor="#2B2B2B"
+             Padding="0"
+             IsVisible="{Binding IsFilterMenuVisible}">
 
-            <BoxView Color="Red" Grid.Row="0" Grid.Column="0" WidthRequest="17" HeightRequest="17" />
-            <BoxView Color="Green" Grid.Row="0" Grid.Column="1" WidthRequest="17" HeightRequest="17" />
-            <BoxView Color="Blue" Grid.Row="1" Grid.Column="0" WidthRequest="17" HeightRequest="17" />
-            <BoxView Color="Yellow" Grid.Row="1" Grid.Column="1" WidthRequest="17" HeightRequest="17" />
-        </Grid>-->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="0" Grid.Column="0">
+                    <CheckBox IsChecked="{Binding IsConsumerGradeChecked, Mode=TwoWay}" />
+                    <Label Text="Consumer Grade" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#b0c3d9"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="0" Grid.Column="2" >
+                    <CheckBox IsChecked="{Binding IsIndustrialGradeChecked, Mode=TwoWay}" />
+                    <Label Text="Industrial Grade" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#5e98d9"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="1" Grid.Column="0">
+                    <CheckBox IsChecked="{Binding IsHighGradeChecked, Mode=TwoWay}" />
+                    <Label Text="High Grade" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#4b69ff"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="1" Grid.Column="2" >
+                    <CheckBox IsChecked="{Binding IsRestrictedChecked, Mode=TwoWay}" />
+                    <Label Text="Restricted" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#8847ff"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="3" Grid.Column="0">
+                    <CheckBox IsChecked="{Binding IsClassifiedChecked, Mode=TwoWay}" />
+                    <Label Text="Classified" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#d32ce6"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="3" Grid.Column="2" >
+                    <CheckBox IsChecked="{Binding IsCovertChecked, Mode=TwoWay}" />
+                    <Label Text="Covert" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#eb4b4b"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="4" Grid.Column="0">
+                    <CheckBox IsChecked="{Binding IsRareSpecialChecked, Mode=TwoWay}" />
+                    <Label Text="Rare Special" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#caac05"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="4" Grid.Column="2" >
+                    <CheckBox IsChecked="{Binding IsContrabandChecked, Mode=TwoWay}" />
+                    <Label Text="Contraband" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#f1ae35"/>
+                </StackLayout>
+
+
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="0" >
+                    <Button MaximumWidthRequest="40" MaximumHeightRequest="40" Margin="8,0,0,0"  Text="&#xf062;" FontFamily="FontAwesome"></Button>
+                    <Label Text="sort by price" VerticalOptions="Center" Margin="10,0,0,0" TextColor="White"/>
+
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="2" >
+                    <Button MaximumWidthRequest="40" MaximumHeightRequest="40" Margin="8,0,0,0"  Text="&#xf062;" FontFamily="FontAwesome"></Button>
+                    <Label Text="sort by rarity" VerticalOptions="Center" Margin="10,0,0,0" TextColor="White"/>
+
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+
+        <!-- Login button -->
         <Button Command="{Binding GetSkinsCommand}"
                 IsEnabled="{Binding IsNotBusy}"
                 Text="Login" 
@@ -73,51 +139,87 @@
                 HeightRequest="50"
                 CornerRadius="25"
                 Padding="8,0,8,0"
-                Margin="0, 0, 10, 0"/>
+                Margin="0, 0, 10, 0"
+                Clicked="OnLoginButtonClicked"/>
 
-        <CollectionView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5"
+        <!-- Login menu -->
+        <StackLayout x:Name="LoginMenuContainer" 
+             Grid.Row="1" 
+             Grid.Column="0" 
+             Grid.ColumnSpan="5"
+             Margin="0,5,0,0"
+             BackgroundColor="#2B2B2B"
+             Padding="0"
+             IsVisible="False">
+            <!-- Menu content -->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="0" Grid.Column="0">
+                    <Label Text="Enter SteamId code: " VerticalOptions="Center" Margin="10,0,0,0" TextColor="#b0c3d9"/>
+                    <Entry Placeholder="Search..."
+                       BackgroundColor="#2B2B2B"
+                       TextColor="White"
+                       Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       WidthRequest="205"
+                       Margin="0, 0, -25, 0"
+                       Text="{Binding SearchText, Mode=TwoWay}"
+                       TextChanged="OnSearchTextChanged">
+                    </Entry>
+                    
+                </StackLayout>
+            </Grid>
+
+        </StackLayout>
+
+
+
+        <CollectionView Grid.Row="2" 
+                        Grid.Column="0" 
+                        Grid.ColumnSpan="5"
                         ItemsSource="{Binding Skins}"
                         SelectionMode="None">
-
-
 
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:Skin">
                     <StackLayout Padding="10" Spacing="7">
                         <Grid Padding="10" VerticalOptions="Start">
                             <StackLayout>
-                                <Label Text="{Binding MarketName}" HorizontalTextAlignment="Center" FontSize="Medium"  FontAttributes="Bold" TextColor="{Binding Color}"/>
-                                
+                                <Label Text="{Binding MarketName}" 
+                                       HorizontalTextAlignment="Center" 
+                                       FontSize="Medium"  
+                                       FontAttributes="Bold" 
+                                       TextColor="{Binding Color}"/>
+
+                                <Label Text="{Binding Color}" 
+                                       HorizontalTextAlignment="Center" 
+                                       FontSize="Medium"  
+                                       FontAttributes="Bold" 
+                                       TextColor="{Binding Color}"/>
                             </StackLayout>
                         </Grid>
 
-                        <!--<Grid>
-                            <StackLayout>
-                                <Label Text="{Binding ItemName, StringFormat='Item Name: {0}'}" />
-                            </StackLayout>
-                        </Grid>
-
-                        <Grid>
-                            <Label Text="{Binding CleanDescriptionFloat}" />
-                        </Grid>
-
-                        <Grid>
-                            
-                                
-                                    <Label Text="{Binding CleanDescriptionText}" />
-                               
-                            
-                        </Grid>-->
-
                         <Grid>
                             <StackLayout>
-                                <Label Text="{Binding PriceLatestSell, StringFormat='Latest selling price: {0} USD'}" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                                <Label Text="{Binding PriceLatestSell, StringFormat='Latest selling price: {0} USD'}" 
+                                       FontAttributes="Bold" 
+                                       HorizontalTextAlignment="Center"/>
                                 <Image />
                             </StackLayout>
                         </Grid>
-
-
-
 
                         <Grid WidthRequest="160" HeightRequest="120">
                             <Image Source="{Binding Image}" Aspect="AspectFill">
@@ -129,17 +231,16 @@
 
                         <Grid Margin="0,20,0,0">
                             <!-- Horizontal line -->
-                            <BoxView Grid.Row="1" Grid.ColumnSpan="5" HeightRequest="1" BackgroundColor="DarkGray" HorizontalOptions="FillAndExpand" VerticalOptions="End"/>
+                            <BoxView Grid.Row="1" 
+                                     Grid.ColumnSpan="5" 
+                                     HeightRequest="1" 
+                                     BackgroundColor="DarkGray" 
+                                     HorizontalOptions="FillAndExpand" 
+                                     VerticalOptions="End"/>
                         </Grid>
-
-
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
-            
-
         </CollectionView>
-
-        
     </Grid>
 </ContentPage>
