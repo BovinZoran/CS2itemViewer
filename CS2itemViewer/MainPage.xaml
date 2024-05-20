@@ -25,14 +25,16 @@
 
         <!-- Label above ScrollView -->
         <Entry
-            Placeholder="Search..."
-            BackgroundColor="#2B2B2B"
-            TextColor="White"
-            Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
-            HorizontalOptions="Center"
-            VerticalOptions="Center"
-            WidthRequest="150"
-            Margin="0, 0, -25, 0">
+    Placeholder="Search..."
+    BackgroundColor="#2B2B2B"
+    TextColor="White"
+    Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+    HorizontalOptions="Center"
+    VerticalOptions="Center"
+    WidthRequest="150"
+    Margin="0, 0, -25, 0"
+    Text="{Binding SearchText, Mode=TwoWay}"
+    TextChanged="OnSearchTextChanged">
         </Entry>
 
         <!-- Buttons -->

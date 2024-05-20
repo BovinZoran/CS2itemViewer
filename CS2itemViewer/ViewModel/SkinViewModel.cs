@@ -5,7 +5,7 @@ using CS2itemViewer.Services;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Text.RegularExpressions;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -16,12 +16,14 @@ namespace CS2itemViewer.ViewModel
         public ObservableCollection<Skin> Skins { get; } = new();
         private readonly ISkinService _skinService;
         private readonly IConnectivity _connectivity;
+        private List<Skin> allSkins;
 
         public SkinViewModel(ISkinService skinService, IConnectivity connectivity)
         {
             Title = "CS2 item Viewer";
             _skinService = skinService;
             _connectivity = connectivity;
+            allSkins = new List<Skin>();
 
             // Call the GetSkinsCommand command when the ViewModel is constructed
             GetSkinsCommand.Execute(null);
@@ -29,6 +31,9 @@ namespace CS2itemViewer.ViewModel
 
         [ObservableProperty]
         bool isRefreshing;
+
+        [ObservableProperty]
+        string searchText;
 
         [RelayCommand]
         async Task GetSkinsAsync()
@@ -50,10 +55,8 @@ namespace CS2itemViewer.ViewModel
                 if (skins == null)
                     return;
 
-                Skins.Clear();
-
-                foreach (var skin in skins)
-                    Skins.Add(skin);
+                allSkins = skins;
+                FilterSkins();
             }
             catch (Exception ex)
             {
@@ -79,8 +82,26 @@ namespace CS2itemViewer.ViewModel
             });
         }
 
-        
+        [RelayCommand]
+        void FilterSkins()
+        {
+            if (string.IsNullOrWhiteSpace(SearchText))
+            {
+                Skins.Clear();
+                foreach (var skin in allSkins)
+                {
+                    Skins.Add(skin);
+                }
+            }
+            else
+            {
+                var filteredSkins = allSkins.Where(skin => skin.MarketName.Contains(SearchText, StringComparison.OrdinalIgnoreCase)).ToList();
+                Skins.Clear();
+                foreach (var skin in filteredSkins)
+                {
+                    Skins.Add(skin);
+                }
+            }
+        }
     }
-
-
 }

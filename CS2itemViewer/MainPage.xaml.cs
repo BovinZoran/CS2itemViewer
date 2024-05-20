@@ -28,6 +28,16 @@ namespace CS2itemViewer
             }
         }
 
+        private void OnSearchTextChanged(object sender, TextChangedEventArgs e)
+        {
+            var viewModel = BindingContext as SkinViewModel;
+            if (viewModel != null)
+            {
+                viewModel.FilterSkinsCommand.Execute(null);
+            }
+        }
+
+
 
 
     }
