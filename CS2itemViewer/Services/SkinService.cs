@@ -81,10 +81,29 @@ namespace CS2itemViewer.Services
                             }
                             else if(marketName.Contains("Case"))
                             {
-                                descriptionText = "is case";
-                                //hier moet nog nagekeken worden dat alle values vanaf de 3de tem de 2de laatste oftewel "or an Exceedingly Rare Special Item!" in descriptionText komen
-                                //for (int i = 3; descriptions[i].GetProperty("value").GetString().Contains("Exceedingly"); i++)
-
+                                for (int i = 3; i <= 21; i++)
+                                {
+                                    // Check if index is within bounds
+                                    if (i < descriptions.Count)
+                                    {
+                                        string propertyValue = descriptions[i].GetProperty("value").GetString();
+                                        if (propertyValue != null)
+                                        {
+                                            descriptionText += propertyValue+"\n";
+                                        }
+                                        //else
+                                        //{
+                                        //    // Handle the case where the property is null
+                                        //    // You can add a default value or skip this element
+                                        //    descriptionText += "Default Value"; // or simply continue;
+                                        //} 
+                                    }
+                                    else
+                                    {
+                                        // Handle the case where the index is out of range
+                                        break;
+                                    }
+                                }
                             }
                             else
                             {

@@ -46,9 +46,7 @@
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
 
 		<!-- Images -->
-		<MauiImage Include="Resources\Images\*" />
-		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
-		<MauiImage Update="Resources\Images\placeholderpicture.png" Resize="True" BaseSize="300,185" /><!-- tijdelijk voor dummy foto als dit weg is, ook files weg doen-->
+		<MauiImage Include="Resources\Images\*" /><!-- tijdelijk voor dummy foto als dit weg is, ook files weg doen-->
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
 
@@ -57,7 +55,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\Images\placeholderpicture.png" />
 	  <None Remove="Resources\Raw\skinDataTest.json" />
 	</ItemGroup>
 
@@ -77,6 +74,10 @@
 	  <MauiXaml Update="DetailsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Resources\Images\" />
 	</ItemGroup>
 
 </Project>
