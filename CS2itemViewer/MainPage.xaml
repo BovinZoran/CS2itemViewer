@@ -168,21 +168,22 @@
                 </Grid.ColumnDefinitions>
 
 
-                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="0" Grid.Column="0">
-                    <Label Text="Enter Steam-ID: " VerticalOptions="Center" Margin="10,0,0,0" TextColor="#b0c3d9"/>
-                    <SearchBar Placeholder="Search..."
-                       BackgroundColor="#2B2B2B"
-                       TextColor="White"
-                       Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"
-                       WidthRequest="250"
-                       Margin="-5, 0, 0, 0"
-                       Text="{Binding SearchText, Mode=TwoWay}"
-                       TextChanged="OnSearchTextChanged">
-                    </SearchBar>
-                    
-                </StackLayout>
+                <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Enter Steam-ID: " VerticalOptions="Center" Margin="10,0,0,0" TextColor="#b0c3d9" Grid.Column="0"/>
+                    <Entry Placeholder="Steam-ID"
+                           BackgroundColor="#2B2B2B"
+                           TextColor="White"
+                           WidthRequest="230"
+                           HorizontalTextAlignment="Center"
+                           Margin="7, 10, 0, 10"
+                           Text="{Binding SteamLoginIDText, Mode=TwoWay}"
+                           Grid.Column="1"/>
+                </Grid>
 
                 <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="5" >
                     <!--<Label Text="how to get SteamID: " VerticalOptions="Center" Margin="10,10,0,0" TextColor="#b0c3d9"  />-->
@@ -199,8 +200,30 @@
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                </Grid> 
-                    
+                </Grid>
+                <!--<SearchBar Placeholder="Search..."
+                           BackgroundColor="#2B2B2B"
+                           TextColor="White"
+                           Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           WidthRequest="220"
+                           Margin="0, 0, -60, 0"
+                           Text="{Binding SteamLoginIDText, Mode=TwoWay}"
+                           >
+                </SearchBar>-->
+                <Button Command="{Binding LoadLoginCommand}"
+                        IsEnabled="{Binding IsNotBusy}"
+                        Text="load" 
+                        Grid.Row="1" 
+                        Grid.Column="4" 
+                        HorizontalOptions="End" 
+                        WidthRequest="52" 
+                        HeightRequest="30"
+                        CornerRadius="25"
+                        Padding="8,0,8,0"
+                        Margin="0, 0, 7, 0"/>
+
             </Grid>
 
         </StackLayout>

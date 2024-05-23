@@ -1,4 +1,5 @@
 ﻿using CS2itemViewer.Model;
+using CS2itemViewer.Services;
 using CS2itemViewer.ViewModel;
 
 namespace CS2itemViewer
@@ -7,11 +8,11 @@ namespace CS2itemViewer
     {
        
 
-        public MainPage(SkinViewModel viewModel)
+        public MainPage(/*SkinViewModel viewModel*/)
         {
             InitializeComponent();
-            BindingContext = viewModel;
-
+            //BindingContext = viewModel;
+            BindingContext = new SkinViewModel(new SkinService(), Connectivity.Current);
 
         }
 

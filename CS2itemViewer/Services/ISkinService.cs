@@ -10,5 +10,6 @@ namespace CS2itemViewer.Services
     public interface ISkinService
     {
         Task<List<Skin>?> GetSkins();
+        void UpdateSteamID(string steamID);
     }
 }

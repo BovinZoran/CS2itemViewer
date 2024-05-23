@@ -11,10 +11,19 @@ namespace CS2itemViewer.Services
     {
         List<Skin>? skinList = new();
         HttpClient httpClient;
+        //private string _steamID = "76561198268749335";  //Standaard Zoran's Steam-ID
+        private string _steamID = "76561199561947824";
 
         public SkinService()
         {
             this.httpClient = new HttpClient();
+        }
+
+        public void UpdateSteamID(string newSteamID)
+        {
+            _steamID = newSteamID;
+            // Clear skinList so it will be reloaded with the new steamID
+            skinList.Clear();
         }
 
         public async Task<List<Skin>?> GetSkins()
@@ -22,10 +31,10 @@ namespace CS2itemViewer.Services
             //J1BAN31YCBSEJLLG, 35HX3C23UD6M37JF
             string apiKey = "35HX3C23UD6M37JF";
             //string steamID = "76561198350557801";//ragnar
-            string steamID = "76561199561947824";//bot
+            //string steamID = "76561199561947824";//bot
             // Define the API endpoint URL
             // nog aanpassen dat ook de id kan ingegeven worden
-            string apiUrl = "https://www.steamwebapi.com/steam/api/inventory?key=" + apiKey + "&steam_id=" + steamID;
+            string apiUrl = $"https://www.steamwebapi.com/steam/api/inventory?key={apiKey}&steam_id={_steamID}";
             // https://www.steamwebapi.com/steam/api/inventory?key=J1BAN31YCBSEJLLG&steam_id=76561199561947824
             // Use JsonSerializerOptions to handle case insensitivity if needed
 

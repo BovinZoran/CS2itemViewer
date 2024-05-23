@@ -19,6 +19,7 @@ namespace CS2itemViewer.ViewModel
         private List<Skin> allSkins;
 
         public ICommand OpenLinkCommand { get; }
+        public ICommand LoadLoginCommand { get; }
 
         public SkinViewModel(ISkinService skinService, IConnectivity connectivity)
         {
@@ -29,7 +30,19 @@ namespace CS2itemViewer.ViewModel
 
             OpenLinkCommand = new RelayCommand<string>(OpenLink);
 
+            // Initialize LoadLoginCommand
+            LoadLoginCommand = new RelayCommand(UpdateSteamID);
+
             // Call the GetSkinsCommand command when the ViewModel is constructed
+            GetSkinsCommand.Execute(null);
+        }
+
+        
+
+        private void UpdateSteamID()
+        {
+            IsLoginMenuVisible = !IsLoginMenuVisible;
+            _skinService.UpdateSteamID(SteamLoginIDText);
             GetSkinsCommand.Execute(null);
         }
 
@@ -52,7 +65,9 @@ namespace CS2itemViewer.ViewModel
         [ObservableProperty]
         string searchText;
 
-        
+        [ObservableProperty]
+        private string steamLoginIDText;
+
 
         private double totalPriceLatestSell;
         public double TotalPriceLatestSell
@@ -195,16 +210,6 @@ namespace CS2itemViewer.ViewModel
             }
         }
 
-        //public bool IsRareSpecialChecked
-        //{
-        //    get => _isRareSpecialChecked;
-        //    set
-        //    {
-        //        SetProperty(ref _isRareSpecialChecked, value);
-        //        FilterSkins();
-        //    }
-        //}
-
         public bool IsContrabandChecked
         {
             get => _isContrabandChecked;
@@ -272,6 +277,7 @@ namespace CS2itemViewer.ViewModel
 
             return false;
         }
+
 
 
     }
