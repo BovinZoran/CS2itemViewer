@@ -103,10 +103,10 @@
                     <Label Text="Covert" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#eb4b4b"/>
                 </StackLayout>
 
-                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="4" Grid.Column="0">
+                <!--<StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="4" Grid.Column="0">
                     <CheckBox IsChecked="{Binding IsRareSpecialChecked, Mode=TwoWay}" />
                     <Label Text="Rare Special" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#caac05"/>
-                </StackLayout>
+                </StackLayout>-->
 
                 <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="4" Grid.Column="2" >
                     <CheckBox IsChecked="{Binding IsContrabandChecked, Mode=TwoWay}" />

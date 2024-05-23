@@ -22,10 +22,11 @@ namespace CS2itemViewer.Services
             //J1BAN31YCBSEJLLG, 35HX3C23UD6M37JF
             string apiKey = "J1BAN31YCBSEJLLG";
             string steamID = "76561198350557801";
+            string skinPortBotID = "76561199561947824";
             // Define the API endpoint URL
             // nog aanpassen dat ook de id kan ingegeven worden
-            string apiUrl = "https://www.steamwebapi.com/steam/api/inventory?key=" + apiKey + "&steam_id=" + steamID;
-
+            string apiUrl = "https://www.steamwebapi.com/steam/api/inventory?key=" + apiKey + "&steam_id=" + skinPortBotID;
+            // https://www.steamwebapi.com/steam/api/inventory?key=J1BAN31YCBSEJLLG&steam_id=76561199561947824
             // Use JsonSerializerOptions to handle case insensitivity if needed
             var sourceGenOptions = new JsonSerializerOptions
             {
