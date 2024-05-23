@@ -30,6 +30,8 @@ namespace CS2itemViewer.ViewModel
 
             OpenLinkCommand = new RelayCommand<string>(OpenLink);
 
+            SteamLoginIDText = "76561198268749335";
+
             // Initialize LoadLoginCommand
             LoadLoginCommand = new RelayCommand(UpdateSteamID);
 
