@@ -203,12 +203,6 @@
                                        FontSize="Medium"  
                                        FontAttributes="Bold" 
                                        TextColor="{Binding Color}"/>
-
-                                <Label Text="{Binding Color}" 
-                                       HorizontalTextAlignment="Center" 
-                                       FontSize="Medium"  
-                                       FontAttributes="Bold" 
-                                       TextColor="{Binding Color}"/>
                             </StackLayout>
                         </Grid>
 

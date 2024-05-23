@@ -37,30 +37,16 @@ namespace CS2itemViewer.Model
 
         public string DescriptionText { get; set; }
 
-        // Inside your Skin class or ViewModel
-        public string CleanDescriptionFloat => CleanseDescriptionFloat(DescriptionFloat);
+        public string CleanDescriptionFloat => CleanseDescription(DescriptionFloat);
 
-        // Inside your Skin class or ViewModel
-        private string CleanseDescriptionFloat(string descriptionFloat)
+        public string CleanDescriptionText => CleanseDescription(DescriptionText);
+        private string CleanseDescription(string input)
         {
             // Remove HTML tags using regex
-            return Regex.Replace(descriptionFloat, "<.*?>", string.Empty);
+            return Regex.Replace(input, "<.*?>", string.Empty);
         }
 
-        // Inside your Skin class or ViewModel
-        public string CleanDescriptionText => CleanseDescriptionText(DescriptionText);
-
-        // Inside your Skin class or ViewModel
-        private string CleanseDescriptionText(string descriptionText)
-        {
-            // Remove HTML tags using regex
-            return Regex.Replace(descriptionText, "<.*?>", string.Empty);
-        }
     }
-
-    
-
-
 
     public class Description
     {
