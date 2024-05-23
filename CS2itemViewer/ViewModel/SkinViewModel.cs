@@ -35,6 +35,9 @@ namespace CS2itemViewer.ViewModel
         [ObservableProperty]
         string searchText;
 
+        [ObservableProperty]
+        double totalPriceLatestSell;
+
         [RelayCommand]
         async Task GetSkinsAsync()
         {
@@ -85,26 +88,18 @@ namespace CS2itemViewer.ViewModel
         [RelayCommand]
         void FilterSkins()
         {
-            if (string.IsNullOrWhiteSpace(SearchText))
+            var filteredSkins = string.IsNullOrWhiteSpace(SearchText)
+                ? allSkins.Where(IsSkinVisible).ToList()
+                : allSkins.Where(skin => skin.MarketName.Contains(SearchText, StringComparison.OrdinalIgnoreCase) && IsSkinVisible(skin)).ToList();
+
+            Skins.Clear();
+            foreach (var skin in filteredSkins)
             {
-                Skins.Clear();
-                foreach (var skin in allSkins)
-                {
-                    if (IsSkinVisible(skin))
-                    {
-                        Skins.Add(skin);
-                    }
-                }
+                Skins.Add(skin);
             }
-            else
-            {
-                var filteredSkins = allSkins.Where(skin => skin.MarketName.Contains(SearchText, StringComparison.OrdinalIgnoreCase) && IsSkinVisible(skin)).ToList();
-                Skins.Clear();
-                foreach (var skin in filteredSkins)
-                {
-                    Skins.Add(skin);
-                }
-            }
+
+            // Calculate the total price of visible skins
+            TotalPriceLatestSell = Skins.Sum(skin => skin.PriceLatestSell);
         }
 
         // Color filter properties
@@ -211,6 +206,30 @@ namespace CS2itemViewer.ViewModel
         private void ShowFilterMenu()
         {
             IsFilterMenuVisible = !IsFilterMenuVisible;
+            
+            if(IsLoginMenuVisible) 
+            {
+            IsLoginMenuVisible = !IsLoginMenuVisible;
+            }
+            
+        }
+
+        private bool _isLoginMenuVisible;
+        public bool IsLoginMenuVisible
+        {
+            get => _isLoginMenuVisible;
+            set => SetProperty(ref _isLoginMenuVisible, value);
+        }
+
+        public ICommand ShowLoginMenuCommand => new Command(ShowLoginMenu);
+        private void ShowLoginMenu()
+        {
+            IsLoginMenuVisible = !IsLoginMenuVisible;
+
+            if (IsFilterMenuVisible)
+            {
+                IsFilterMenuVisible = !IsFilterMenuVisible;
+            }
         }
 
 

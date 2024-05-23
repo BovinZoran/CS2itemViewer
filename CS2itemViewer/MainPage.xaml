@@ -11,6 +11,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -22,32 +23,40 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
+        <Label Text="T.V.:"
+               Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5"
+               HorizontalTextAlignment="Start" 
+               FontSize="Medium"  
+               FontAttributes="Bold" 
+               TextColor="Yellow"
+               Padding="10"/>    
+
         <!-- Label above ScrollView -->
-        <Entry Placeholder="Search..."
+        <SearchBar Placeholder="Search..."
                BackgroundColor="#2B2B2B"
                TextColor="White"
-               Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
+               Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
                HorizontalOptions="Center"
                VerticalOptions="Center"
-               WidthRequest="150"
-               Margin="0, 0, -25, 0"
+               WidthRequest="220"
+               Margin="0, 0, -60, 0"
                Text="{Binding SearchText, Mode=TwoWay}"
                TextChanged="OnSearchTextChanged">
-        </Entry>
+        </SearchBar>
 
         <!-- Filter button -->
         <Button Text="Filter" 
         Command="{Binding ShowFilterMenuCommand}"
         IsEnabled="{Binding IsNotBusy}"
         HorizontalOptions="End" 
-        WidthRequest="65" 
-        HeightRequest="35" 
-        Margin="0, 0, -25, 0"
-        Grid.Row="0" Grid.Column="2"/>
+        WidthRequest="62" 
+        HeightRequest="35"
+        Margin="0, 0, 0, 0"
+        Grid.Row="1" Grid.Column="3"/>
 
         <!-- Filter menu -->
         <StackLayout x:Name="FilterMenuContainer" 
-             Grid.Row="1" 
+             Grid.Row="2" 
              Grid.Column="0" 
              Grid.ColumnSpan="5"
              Margin="0,5,0,0"
@@ -72,85 +81,78 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-
                 <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="0" Grid.Column="0">
                     <CheckBox IsChecked="{Binding IsConsumerGradeChecked, Mode=TwoWay}" />
                     <Label Text="Consumer Grade" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#b0c3d9"/>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="0" Grid.Column="2" >
-                    <CheckBox IsChecked="{Binding IsIndustrialGradeChecked, Mode=TwoWay}" />
-                    <Label Text="Industrial Grade" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#5e98d9"/>
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="1" Grid.Column="0">
-                    <CheckBox IsChecked="{Binding IsHighGradeChecked, Mode=TwoWay}" />
-                    <Label Text="High Grade" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#4b69ff"/>
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="1" Grid.Column="2" >
                     <CheckBox IsChecked="{Binding IsRestrictedChecked, Mode=TwoWay}" />
                     <Label Text="Restricted" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#8847ff"/>
                 </StackLayout>
 
-                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="3" Grid.Column="0">
-                    <CheckBox IsChecked="{Binding IsClassifiedChecked, Mode=TwoWay}" />
-                    <Label Text="Classified" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#d32ce6"/>
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="1" Grid.Column="0">
+                    <CheckBox IsChecked="{Binding IsIndustrialGradeChecked, Mode=TwoWay}" />
+                    <Label Text="Industrial Grade" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#5e98d9"/>
                 </StackLayout>
 
-                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="3" Grid.Column="2" >
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="1" Grid.Column="2" >
                     <CheckBox IsChecked="{Binding IsCovertChecked, Mode=TwoWay}" />
                     <Label Text="Covert" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#eb4b4b"/>
                 </StackLayout>
 
-                <!--<StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="4" Grid.Column="0">
-                    <CheckBox IsChecked="{Binding IsRareSpecialChecked, Mode=TwoWay}" />
-                    <Label Text="Rare Special" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#caac05"/>
-                </StackLayout>-->
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="3" Grid.Column="0">
+                    <CheckBox IsChecked="{Binding IsHighGradeChecked, Mode=TwoWay}" />
+                    <Label Text="High Grade" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#4b69ff"/>
+                </StackLayout>
 
-                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="4" Grid.Column="2" >
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="3" Grid.Column="2" >
                     <CheckBox IsChecked="{Binding IsContrabandChecked, Mode=TwoWay}" />
                     <Label Text="Contraband" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#f1ae35"/>
                 </StackLayout>
 
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="4" Grid.Column="0">
+                    <CheckBox IsChecked="{Binding IsClassifiedChecked, Mode=TwoWay}" />
+                    <Label Text="Classified" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#d32ce6"/>
+                </StackLayout>
+
+                <!--<StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="4" Grid.Column="2" >
+                </StackLayout>-->
 
                 <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="0" >
                     <Button MaximumWidthRequest="40" MaximumHeightRequest="40" Margin="8,0,0,0"  Text="&#xf062;" FontFamily="FontAwesome"></Button>
                     <Label Text="sort by price" VerticalOptions="Center" Margin="10,0,0,0" TextColor="White"/>
-
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="2" >
                     <Button MaximumWidthRequest="40" MaximumHeightRequest="40" Margin="8,0,0,0"  Text="&#xf062;" FontFamily="FontAwesome"></Button>
                     <Label Text="sort by rarity" VerticalOptions="Center" Margin="10,0,0,0" TextColor="White"/>
-
                 </StackLayout>
             </Grid>
         </StackLayout>
 
         <!-- Login button -->
-        <Button Command="{Binding GetSkinsCommand}"
+        <Button Command="{Binding ShowLoginMenuCommand}"
                 IsEnabled="{Binding IsNotBusy}"
                 Text="Login" 
-                Grid.Row="0" 
+                Grid.Row="1" 
                 Grid.Column="4" 
                 HorizontalOptions="End" 
                 WidthRequest="50" 
                 HeightRequest="50"
                 CornerRadius="25"
                 Padding="8,0,8,0"
-                Margin="0, 0, 10, 0"
-                Clicked="OnLoginButtonClicked"/>
+                Margin="0, 0, 10, 0"/>
 
         <!-- Login menu -->
         <StackLayout x:Name="LoginMenuContainer" 
-             Grid.Row="1" 
+             Grid.Row="2" 
              Grid.Column="0" 
              Grid.ColumnSpan="5"
              Margin="0,5,0,0"
              BackgroundColor="#2B2B2B"
              Padding="0"
-             IsVisible="False">
+             IsVisible="{Binding IsLoginMenuVisible}">
             <!-- Menu content -->
             <Grid>
                 <Grid.RowDefinitions>
@@ -168,7 +170,7 @@
 
                 <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="0" Grid.Column="0">
                     <Label Text="Enter SteamId code: " VerticalOptions="Center" Margin="10,0,0,0" TextColor="#b0c3d9"/>
-                    <Entry Placeholder="Search..."
+                    <SearchBar Placeholder="Search..."
                        BackgroundColor="#2B2B2B"
                        TextColor="White"
                        Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
@@ -178,7 +180,7 @@
                        Margin="0, 0, -25, 0"
                        Text="{Binding SearchText, Mode=TwoWay}"
                        TextChanged="OnSearchTextChanged">
-                    </Entry>
+                    </SearchBar>
                     
                 </StackLayout>
             </Grid>
@@ -187,7 +189,7 @@
 
 
 
-        <CollectionView Grid.Row="2" 
+        <CollectionView Grid.Row="3" 
                         Grid.Column="0" 
                         Grid.ColumnSpan="5"
                         ItemsSource="{Binding Skins}"
