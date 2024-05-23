@@ -23,13 +23,13 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Label Text="T.V.:"
+        <Label Text="{Binding TotalPriceLatestSell, StringFormat='Total value: {0} USD'}" 
                Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5"
                HorizontalTextAlignment="Start" 
                FontSize="Medium"  
                FontAttributes="Bold" 
-               TextColor="Yellow"
-               Padding="10"/>    
+               TextColor="Green"
+               Margin="10, -5, 0, 7"/>    
 
         <!-- Label above ScrollView -->
         <SearchBar Placeholder="Search..."
@@ -138,8 +138,8 @@
                 Grid.Row="1" 
                 Grid.Column="4" 
                 HorizontalOptions="End" 
-                WidthRequest="50" 
-                HeightRequest="50"
+                WidthRequest="52" 
+                HeightRequest="52"
                 CornerRadius="25"
                 Padding="8,0,8,0"
                 Margin="0, 0, 10, 0"/>
@@ -169,7 +169,7 @@
 
 
                 <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="0" Grid.Column="0">
-                    <Label Text="Enter SteamId code: " VerticalOptions="Center" Margin="10,0,0,0" TextColor="#b0c3d9"/>
+                    <Label Text="Enter Steam-ID: " VerticalOptions="Center" Margin="10,0,0,0" TextColor="#b0c3d9"/>
                     <SearchBar Placeholder="Search..."
                        BackgroundColor="#2B2B2B"
                        TextColor="White"
@@ -183,6 +183,24 @@
                     </SearchBar>
                     
                 </StackLayout>
+
+                <Grid Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="5" >
+                    <!--<Label Text="how to get SteamID: " VerticalOptions="Center" Margin="10,10,0,0" TextColor="#b0c3d9"  />-->
+                    <Label VerticalOptions="Center" Margin="10,10,0,0" TextColor="#b0c3d9" >
+                        <Label.FormattedText >
+                            <FormattedString >
+                                <Span Text="Get Steam-ID Here" TextColor="LightBlue" TextDecorations="Underline" >
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                            Command="{Binding OpenLinkCommand}" 
+                                            CommandParameter="https://store.steampowered.com/account/" />
+                                    </Span.GestureRecognizers>
+                                </Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </Grid> 
+                    
             </Grid>
 
         </StackLayout>

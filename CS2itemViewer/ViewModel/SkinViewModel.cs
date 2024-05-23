@@ -18,6 +18,8 @@ namespace CS2itemViewer.ViewModel
         private readonly IConnectivity _connectivity;
         private List<Skin> allSkins;
 
+        public ICommand OpenLinkCommand { get; }
+
         public SkinViewModel(ISkinService skinService, IConnectivity connectivity)
         {
             Title = "CS2 item Viewer";
@@ -25,8 +27,23 @@ namespace CS2itemViewer.ViewModel
             _connectivity = connectivity;
             allSkins = new List<Skin>();
 
+            OpenLinkCommand = new RelayCommand<string>(OpenLink);
+
             // Call the GetSkinsCommand command when the ViewModel is constructed
             GetSkinsCommand.Execute(null);
+        }
+
+        private void OpenLink(string url)
+        {
+            try
+            {
+                // Using Microsoft.Maui.ApplicationModel.Launcher to open the URL
+                Launcher.OpenAsync(new Uri(url));
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Unable to open link: {ex.Message}");
+            }
         }
 
         [ObservableProperty]
@@ -35,8 +52,14 @@ namespace CS2itemViewer.ViewModel
         [ObservableProperty]
         string searchText;
 
-        [ObservableProperty]
-        double totalPriceLatestSell;
+        
+
+        private double totalPriceLatestSell;
+        public double TotalPriceLatestSell
+        {
+            get => totalPriceLatestSell;
+            set => SetProperty(ref totalPriceLatestSell, Math.Round(value, 2));
+        }
 
         [RelayCommand]
         async Task GetSkinsAsync()
@@ -98,7 +121,7 @@ namespace CS2itemViewer.ViewModel
                 Skins.Add(skin);
             }
 
-            // Calculate the total price of visible skins
+            // Calculate the total price of visible skins and round to 2 decimal places
             TotalPriceLatestSell = Skins.Sum(skin => skin.PriceLatestSell);
         }
 
