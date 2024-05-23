@@ -234,7 +234,8 @@
                         Grid.Column="0" 
                         Grid.ColumnSpan="5"
                         ItemsSource="{Binding Skins}"
-                        SelectionMode="None">
+                        SelectionMode="None"
+                        Margin="0,7,0,0">
 
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:Skin">
