@@ -38,7 +38,6 @@ namespace CS2itemViewer.Model
         public string DescriptionText { get; set; }
 
         public string CleanDescriptionFloat => CleanseDescription(DescriptionFloat);
-
         public string CleanDescriptionText => CleanseDescription(DescriptionText);
         private string CleanseDescription(string input)
         {

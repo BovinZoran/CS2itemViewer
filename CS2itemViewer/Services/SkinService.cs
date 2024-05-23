@@ -20,18 +20,19 @@ namespace CS2itemViewer.Services
         public async Task<List<Skin>?> GetSkins()
         {
             //J1BAN31YCBSEJLLG, 35HX3C23UD6M37JF
-            string apiKey = "J1BAN31YCBSEJLLG";
-            string steamID = "76561198350557801";
-            string skinPortBotID = "76561199561947824";
+            string apiKey = "35HX3C23UD6M37JF";
+            //string steamID = "76561198350557801";//ragnar
+            string steamID = "76561199561947824";//bot
             // Define the API endpoint URL
             // nog aanpassen dat ook de id kan ingegeven worden
-            string apiUrl = "https://www.steamwebapi.com/steam/api/inventory?key=" + apiKey + "&steam_id=" + skinPortBotID;
+            string apiUrl = "https://www.steamwebapi.com/steam/api/inventory?key=" + apiKey + "&steam_id=" + steamID;
             // https://www.steamwebapi.com/steam/api/inventory?key=J1BAN31YCBSEJLLG&steam_id=76561199561947824
             // Use JsonSerializerOptions to handle case insensitivity if needed
-            var sourceGenOptions = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            };
+
+            //var sourceGenOptions = new JsonSerializerOptions//waarom dit
+            //{
+            //    PropertyNameCaseInsensitive = true
+            //};
 
             // Check if the skinList is already populated
             if (skinList?.Count > 0)
@@ -57,7 +58,6 @@ namespace CS2itemViewer.Services
                     string descriptionFloat = string.Empty;
                     string descriptionText = string.Empty;
 
-
                     // Display the extracted fields
                     Console.WriteLine("Market Name: " + marketName);
                     Console.WriteLine("Item Name: " + itemName);
@@ -77,7 +77,8 @@ namespace CS2itemViewer.Services
                         {
                             if (marketName.StartsWith("StatTrak"))
                             {
-                                descriptionText = descriptions[7].GetProperty("value").GetString();
+                                descriptionText += descriptions[4].GetProperty("value").GetString() + "\n";
+                                descriptionText += descriptions[7].GetProperty("value").GetString() + "\n";
                             }
                             else if(marketName.Contains("Case"))
                             {
@@ -90,13 +91,7 @@ namespace CS2itemViewer.Services
                                         if (propertyValue != null)
                                         {
                                             descriptionText += propertyValue+"\n";
-                                        }
-                                        //else
-                                        //{
-                                        //    // Handle the case where the property is null
-                                        //    // You can add a default value or skip this element
-                                        //    descriptionText += "Default Value"; // or simply continue;
-                                        //} 
+                                        } 
                                     }
                                     else
                                     {
