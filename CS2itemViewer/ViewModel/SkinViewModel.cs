@@ -20,8 +20,13 @@ namespace CS2itemViewer.ViewModel
 
         public ICommand OpenLinkCommand { get; }
         public ICommand LoadLoginCommand { get; }
+        public ICommand ImageTappedCommand { get; }
 
-        public SkinViewModel(ISkinService skinService, IConnectivity connectivity)
+        private readonly INavigation _navigation;
+
+        public ICommand DummyCommand { get; }
+
+        public SkinViewModel(ISkinService skinService, IConnectivity connectivity, INavigation navigation)
         {
             Title = "CS2 item Viewer";
             _skinService = skinService;
@@ -30,7 +35,12 @@ namespace CS2itemViewer.ViewModel
 
             OpenLinkCommand = new RelayCommand<string>(OpenLink);
 
-            SteamLoginIDText = "76561198268749335";
+            DummyCommand = new Command(OnDummyCommand);
+
+            _navigation = navigation;
+            ImageTappedCommand = new Command<Skin>(async (skin) => await OnImageTapped(skin));
+
+            SteamLoginIDText = "76561198268749335"; // remove later
 
             // Initialize LoadLoginCommand
             LoadLoginCommand = new RelayCommand(UpdateSteamID);
@@ -39,7 +49,28 @@ namespace CS2itemViewer.ViewModel
             GetSkinsCommand.Execute(null);
         }
 
-        
+        private void OnDummyCommand(object parameter)
+        {
+            Debug.WriteLine("Dummy command executed!");
+        }
+
+        private async Task OnImageTapped(Skin tappedSkin)
+        {
+            Debug.WriteLine("Image tapped!");
+            if (tappedSkin != null)
+            {
+                try
+                {
+                    // Navigate to the DetailsPage and pass the skin object as a parameter
+                    await _navigation.PushAsync(new DetailsPage(new SkinDetailsViewModel(tappedSkin)));
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error navigating to DetailsPage: {ex.Message}");
+                }
+            }
+        }
+
 
         private void UpdateSteamID()
         {

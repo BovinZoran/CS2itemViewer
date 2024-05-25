@@ -259,13 +259,17 @@
                             </StackLayout>
                         </Grid>
 
-                        <Grid WidthRequest="160" HeightRequest="120">
-                            <Image Source="{Binding Image}" Aspect="AspectFill">
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OnImageTapped" />
-                                </Image.GestureRecognizers>
-                            </Image>
-                        </Grid>
+                        <Frame HeightRequest="120" WidthRequest="160" BackgroundColor="Transparent" BorderColor="Transparent" Padding="0">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding BindingContext.ImageTappedCommand, Source={RelativeSource AncestorType={x:Type CollectionView}}}" CommandParameter="{Binding .}" />
+                            </Frame.GestureRecognizers>
+                            <Image Source="{Binding Image}" Aspect="AspectFill" />
+                        </Frame>
+
+
+
+
+
 
                         <Grid Margin="0,20,0,0">
                             <!-- Horizontal line -->

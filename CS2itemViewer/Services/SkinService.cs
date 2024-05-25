@@ -29,7 +29,7 @@ namespace CS2itemViewer.Services
         public async Task<List<Skin>?> GetSkins()
         {
             //J1BAN31YCBSEJLLG, 35HX3C23UD6M37JF
-            string apiKey = "35HX3C23UD6M37JF";
+            string apiKey = "C1SZ2ASMQKUCOP8M";
             //string steamID = "76561198350557801";//ragnar
             //string steamID = "76561199561947824";//bot
             // Define the API endpoint URL
