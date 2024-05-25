@@ -49,7 +49,7 @@ Week 12 (13/05): 12 uren:
 - details page styling aangepas
 - details page kan nu data van geselecteerde skin tonen
 
-Week 12 (13/05): 6 uren:
+Week 12 (13/05): 10 uren:
 - login opmaak aanpassen
 - login operationeel maken
 - filter opmaak aangemaakt
@@ -57,3 +57,4 @@ Week 12 (13/05): 6 uren:
 - code cleanup
 - UI changes
 - seach bar laten werken
+- code behind uit MainPage halen
