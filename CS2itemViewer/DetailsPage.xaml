@@ -48,7 +48,7 @@
 
                 <Grid>
                     <StackLayout>
-                        <Label Text="{Binding PriceLatestSell, StringFormat='This is the latest price: {0} USD'}" FontAttributes="Bold" />
+                        <Label Text="{Binding PriceLatestSell, StringFormat='Latest selling price: {0} USD'}" FontAttributes="Bold" />
                         <Image />
                     </StackLayout>
                 </Grid>

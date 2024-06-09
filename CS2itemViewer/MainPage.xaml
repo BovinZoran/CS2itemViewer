@@ -30,9 +30,9 @@
                FontSize="Medium"  
                FontAttributes="Bold" 
                TextColor="#e28735"
-               Margin="10, -5, 0, 7"/>    
+               Margin="10, -5, 0, 7"/>
 
-        <!-- Label above ScrollView -->
+        <!-- search DB7A31 E28735-->
         <SearchBar Placeholder="Search..."
                BackgroundColor="#2B2B2B"
                TextColor="White"
