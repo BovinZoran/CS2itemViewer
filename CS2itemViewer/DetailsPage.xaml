@@ -28,7 +28,6 @@
                 <Grid Padding="10" VerticalOptions="Start">
                     <StackLayout>
                         <Label Text="{Binding MarketName}" HorizontalTextAlignment="Center" FontSize="Medium"  FontAttributes="Bold" TextColor="{Binding Color}"/>
-
                     </StackLayout>
                 </Grid>
 

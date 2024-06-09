@@ -302,7 +302,6 @@ namespace CS2itemViewer.ViewModel
                 (IsRestrictedChecked && skin.Color == "#8847ff") ||
                 (IsClassifiedChecked && skin.Color == "#d32ce6") ||
                 (IsCovertChecked && skin.Color == "#eb4b4b") ||
-                //(IsRareSpecialChecked && skin.Color == "#e4ae39") ||   //gwn uit case is goud 
                 (IsContrabandChecked && skin.Color == "#e4ae39"))
             {
                 return true;
