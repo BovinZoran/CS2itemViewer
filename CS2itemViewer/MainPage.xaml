@@ -29,7 +29,7 @@
                HorizontalTextAlignment="Start" 
                FontSize="Medium"  
                FontAttributes="Bold" 
-               TextColor="Green"
+               TextColor="#e28735"
                Margin="10, -5, 0, 7"/>    
 
         <!-- Label above ScrollView -->
@@ -132,10 +132,10 @@
             
         </StackLayout>
 
-        <!-- Login button -->
+        <!-- ID button -->
         <Button Command="{Binding ShowLoginMenuCommand}"
                 IsEnabled="{Binding IsNotBusy}"
-                Text="Login" 
+                Text="SID" 
                 Grid.Row="1" 
                 Grid.Column="4" 
                 HorizontalOptions="End" 
@@ -145,7 +145,7 @@
                 Padding="8,0,8,0"
                 Margin="0, 0, 10, 0"/>
 
-        <!-- Login menu -->
+        <!-- ID menu -->
         <StackLayout x:Name="LoginMenuContainer" 
              Grid.Row="2" 
              Grid.Column="0" 
@@ -194,10 +194,10 @@
                 </Grid>
 
                 <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="5" >
-                    <Label VerticalOptions="Center" Margin="38,10,0,10" TextColor="#b0c3d9" >
+                    <Label VerticalOptions="Center" Margin="38,10,0,10" TextColor="#d0d0d0" >
                         <Label.FormattedText >
                             <FormattedString >
-                                <Span Text="Get Steam-ID Here" TextColor="LightBlue" TextDecorations="Underline" >
+                                <Span Text="Get Steam-ID Here" TextColor="#e28735" TextDecorations="Underline" >
                                     <Span.GestureRecognizers>
                                         <TapGestureRecognizer 
                                             Command="{Binding OpenLinkCommand}" 

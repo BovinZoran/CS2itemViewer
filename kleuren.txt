@@ -1,0 +1,31 @@
+lichtblauw 52 129 169
+#3481A9
+
+lichtgrijs 217 217 217
+#D9D9D9
+
+doet dit zelfs iets?
+donkergrijs 206 206 206
+#CECECE
+
+donkeroranje 219 122 49
+#DB7A31
+
+zoveel verschil is er toch niet
+oranje 226 135 53
+#E28735
+
+lichtoranje 249 197 138
+#F9C58A
+
+lichtdonkerblauw 79 85 109
+#4F5564
+
+donkerblauw 66 72 98
+#424862
+
+logo blauw
+##010B1F
+
+zwart 30 32 46
+#1E202E
