@@ -7,6 +7,7 @@
              x:DataType="viewmodel:SkinDetailsViewModel"         
              Title="DetailsPage">
     <Grid>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -20,18 +21,10 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <!--<Label Text="{Binding MarketName}" />
-        <Label Text="{Binding ItemName}" />
-        <Label Text="{Binding DescriptionFloat}" />
-        <Label Text="{Binding DescriptionText}" />
-        <Label Text="{Binding PriceLatestSell, StringFormat='This is the latest price: {0} USD'}" />-->
-
-
         <ScrollView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5">
-
-
-
+            
             <StackLayout Padding="10" Spacing="7">
+                
                 <Grid Padding="10" VerticalOptions="Start">
                     <StackLayout>
                         <Label Text="{Binding MarketName}" HorizontalTextAlignment="Center" FontSize="Medium"  FontAttributes="Bold" TextColor="{Binding Color}"/>
@@ -50,11 +43,7 @@
                 </Grid>
 
                 <Grid>
-
-
                     <Label Text="{Binding DescriptionText}" />
-
-
                 </Grid>
 
                 <Grid>
@@ -64,23 +53,15 @@
                     </StackLayout>
                 </Grid>
 
-
-
-
                 <Grid WidthRequest="420" HeightRequest="300">
                     <Image Source="{Binding Image}" Aspect="AspectFill">
-
                     </Image>
                 </Grid>
 
-                
-
-
             </StackLayout>
-
 
         </ScrollView>
 
-
     </Grid>
+    
 </ContentPage>
