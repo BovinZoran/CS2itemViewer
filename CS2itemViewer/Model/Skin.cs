@@ -5,8 +5,6 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 
 namespace CS2itemViewer.Model

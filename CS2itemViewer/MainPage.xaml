@@ -61,7 +61,6 @@
              Grid.Column="0" 
              Grid.ColumnSpan="5"
              Margin="0,5,0,0"
-             
              Padding="0"
              IsVisible="{Binding IsFilterMenuVisible}">
 
@@ -118,11 +117,21 @@
                     <Label Text="Classified" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#d32ce6"/>
                 </StackLayout>
 
+                <!-- price --><!--
                 <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="0" >
                     <Button MaximumWidthRequest="40" MaximumHeightRequest="40" Margin="8,0,0,0"  Text="&#xf062;" FontFamily="FontAwesome"></Button>
                     <Label Text="sort by price" VerticalOptions="Center" Margin="10,0,0,0"/>
+                </StackLayout>-->
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="0" >
+                    <Button Command="{Binding SortByPriceCommand}" 
+                            Text="Sort by Price" 
+                            HorizontalOptions="Center" />
+                    <Switch IsToggled="{Binding IsSortByPriceAscending}" 
+                            HorizontalOptions="End"
+                            VerticalOptions="Center"/>
                 </StackLayout>
 
+                <!-- rarity -->
                 <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="2" >
                     <Button MaximumWidthRequest="40" MaximumHeightRequest="40" Margin="8,0,0,0"  Text="&#xf062;" FontFamily="FontAwesome"></Button>
                     <Label Text="sort by rarity" VerticalOptions="Center" Margin="10,0,0,0"/>
