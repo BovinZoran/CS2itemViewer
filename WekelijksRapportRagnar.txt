@@ -35,4 +35,9 @@ week 13 (20/05): 4 uren:
 
 week 15 (03/06): ... uren:
 3 uur : icon en splash screen
+10 uur: icon en splash screen beter maken,
+        Zoran helpen met erors,
+        visuele proberen beter te maken,
+        uitzoeken en proberen items asynchroon te laden(gaat we niet doen),
+        titels proberen te fixen
 
