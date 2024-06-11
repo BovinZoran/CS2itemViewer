@@ -33,11 +33,13 @@ week 13 (20/05): 4 uren:
 3 uur les: cases worden nu op de goede manier getoont, stattrak items is iets kapot gegaan
 1 uur thuis: stattrak items gefikst en paar andere kleine dingen
 
-week 15 (03/06): ... uren:
+week 15 (03/06): 13 uren:
 3 uur : icon en splash screen
 10 uur: icon en splash screen beter maken,
         Zoran helpen met erors,
         visuele proberen beter te maken,
         uitzoeken en proberen items asynchroon te laden(gaat we niet doen),
-        titels proberen te fixen
+        titels proberen te fixenµ
 
+week 16 (10/06): ... uren:
+2 uur: sorteren op prijs, hopenlijkk ook nog op rarity
