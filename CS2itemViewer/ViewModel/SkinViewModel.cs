@@ -21,9 +21,13 @@ namespace CS2itemViewer.ViewModel
         private readonly ISkinService _skinService;
         private readonly IConnectivity _connectivity;
         private List<Skin> allSkins;
+        private bool _isSortByPriceAscending = false;
+        private bool _isSortByRarityAscending= false;
         private bool _isSortByPriceAscending = false;  
 
         public ICommand SortByPriceCommand => new Command(SortByPrice);
+        public ICommand SortByRarityCommand => new Command(SortByRarity);
+
         public ICommand OpenLinkCommand { get; }
         public Command OnSearchedCommand { get; }
         public ICommand LoadLoginCommand { get; }
@@ -140,7 +144,7 @@ namespace CS2itemViewer.ViewModel
                 ? allSkins.Where(IsSkinVisible).ToList()
                 : allSkins.Where(skin => skin.MarketName.Contains(SearchText, StringComparison.OrdinalIgnoreCase) && IsSkinVisible(skin)).ToList();
 
-            //sortby price
+            // Sort by price
             if (IsSortByPriceAscending)
             {
                 filteredSkins = filteredSkins.OrderBy(skin => skin.PriceLatestSell).ToList();
@@ -148,6 +152,12 @@ namespace CS2itemViewer.ViewModel
             else
             {
                 filteredSkins = filteredSkins.OrderByDescending(skin => skin.PriceLatestSell).ToList();
+            }
+
+            // Sort by rarity if toggled
+            if (IsSortByRarityAscending)
+            {
+                filteredSkins = filteredSkins.OrderBy(skin => GetRarityOrder(skin.Color)).ToList();
             }
 
             Skins.Clear();
@@ -301,7 +311,16 @@ namespace CS2itemViewer.ViewModel
                 FilterSkins();
             }
         }
-       
+
+        public bool IsSortByRarityAscending
+        {
+            get => _isSortByRarityAscending;
+            set
+            {
+                SetProperty(ref _isSortByRarityAscending, value);
+                FilterSkins();
+            }
+        }
 
         [RelayCommand]
         private void OnSearched()
@@ -312,6 +331,26 @@ namespace CS2itemViewer.ViewModel
         private void SortByPrice()
         {
             IsSortByPriceAscending = !IsSortByPriceAscending;
+        }
+
+        private void SortByRarity()
+        {
+            IsSortByRarityAscending = !IsSortByRarityAscending;
+        }
+
+        private int GetRarityOrder(string color)
+        {
+            return color switch
+            {
+                "#b0c3d9" => 1, // Consumer Grade
+                "#5e98d9" => 2, // Industrial Grade
+                "#4b69ff" => 3, // High Grade
+                "#8847ff" => 4, // Restricted
+                "#d32ce6" => 5, // Classified
+                "#eb4b4b" => 6, // Covert
+                "#e4ae39" => 7, // Contraband
+                _ => 8 // Any other color
+            };
         }
     }
 }
