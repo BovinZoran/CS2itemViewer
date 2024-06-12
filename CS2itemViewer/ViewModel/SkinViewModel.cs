@@ -19,12 +19,13 @@ namespace CS2itemViewer.ViewModel
         private List<Skin> allSkins;
 
         public ICommand OpenLinkCommand { get; }
+        public Command OnSearchedCommand { get; }
         public ICommand LoadLoginCommand { get; }
         public ICommand ImageTappedCommand { get; }
 
         private readonly INavigation _navigation;
 
-        public ICommand DummyCommand { get; }
+        //public ICommand DummyCommand { get; }
 
         public SkinViewModel(ISkinService skinService, IConnectivity connectivity, INavigation navigation)
         {
@@ -35,12 +36,14 @@ namespace CS2itemViewer.ViewModel
 
             OpenLinkCommand = new RelayCommand<string>(OpenLink);
 
-            DummyCommand = new Command(OnDummyCommand);
+            //DummyCommand = new Command(OnDummyCommand);
 
             _navigation = navigation;
             ImageTappedCommand = new Command<Skin>(async (skin) => await OnImageTapped(skin));
 
             SteamLoginIDText = "76561198268749335"; // remove later
+
+            OnSearchedCommand = new Command(OnSearched);
 
             // Initialize LoadLoginCommand
             LoadLoginCommand = new RelayCommand(UpdateSteamID);
@@ -49,10 +52,10 @@ namespace CS2itemViewer.ViewModel
             GetSkinsCommand.Execute(null);
         }
 
-        private void OnDummyCommand(object parameter)
-        {
-            Debug.WriteLine("Dummy command executed!");
-        }
+        //private void OnDummyCommand(object parameter)
+        //{
+        //    Debug.WriteLine("Dummy command executed!");
+        //}
 
         private async Task OnImageTapped(Skin tappedSkin)
         {
@@ -180,7 +183,6 @@ namespace CS2itemViewer.ViewModel
         private bool _isRestrictedChecked = true;
         private bool _isClassifiedChecked = true;
         private bool _isCovertChecked = true;
-        private bool _isRareSpecialChecked = true;
         private bool _isContrabandChecked = true;
 
         public bool IsConsumerGradeChecked
@@ -311,7 +313,13 @@ namespace CS2itemViewer.ViewModel
             return false;
         }
 
+       
 
+        [RelayCommand]
+        private void OnSearched()
+        {
+            FilterSkins();
+        }
 
     }
 }

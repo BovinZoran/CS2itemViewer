@@ -5,10 +5,12 @@
              xmlns:model="clr-namespace:CS2itemViewer.Model"
              xmlns:viewmodel="clr-namespace:CS2itemViewer.ViewModel"
              x:DataType="viewmodel:SkinViewModel"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              Title="{Binding Title}">
 
     <Grid>
         
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -42,7 +44,11 @@
                WidthRequest="220"
                Margin="0, 0, -60, 0"
                Text="{Binding SearchText, Mode=TwoWay}"
-               TextChanged="OnSearchTextChanged">
+                >
+            <SearchBar.Behaviors>
+                    <toolkit:EventToCommandBehavior EventName="TextChanged" Command="{Binding OnSearchedCommand}" />
+               </SearchBar.Behaviors>
+                
         </SearchBar>
 
         <!-- Filter button -->

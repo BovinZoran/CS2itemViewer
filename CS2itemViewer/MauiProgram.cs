@@ -1,4 +1,5 @@
-﻿using CS2itemViewer.Services;
+﻿using CommunityToolkit.Maui;
+using CS2itemViewer.Services;
 using CS2itemViewer.ViewModel;
 using Microsoft.Extensions.Logging;
 
@@ -30,6 +31,15 @@ namespace CS2itemViewer
             //pages
             builder.Services.AddSingleton<MainPage>();
             builder.Services.AddTransient<DetailsPage>();
+
+            builder
+                .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
+                .ConfigureFonts(fonts =>
+                {
+                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                    fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                });
 
 #if DEBUG
             builder.Logging.AddDebug();
