@@ -1,35 +1,34 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+//using CoreML;
 using CS2itemViewer.Model;
 using CS2itemViewer.Services;
+using Newtonsoft.Json;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows.Input;
 
 namespace CS2itemViewer.ViewModel
 {
     public partial class SkinViewModel : BaseViewModel
     {
-        public ObservableCollection<Skin> Skins { get; } = new();
+        public ObservableCollection<Skin> Skins { get; set; } = new ObservableCollection<Skin>();
+
         private readonly ISkinService _skinService;
         private readonly IConnectivity _connectivity;
         private List<Skin> allSkins;
-        private bool _isSortByPriceAscending = false;
+        private bool _isSortByPriceAscending = false;  
 
         public ICommand SortByPriceCommand => new Command(SortByPrice);
         public ICommand OpenLinkCommand { get; }
         public Command OnSearchedCommand { get; }
         public ICommand LoadLoginCommand { get; }
-        public ICommand ImageTappedCommand { get; }
 
-        private readonly INavigation _navigation;
-
-        //public ICommand DummyCommand { get; }
-
-        public SkinViewModel(ISkinService skinService, IConnectivity connectivity, INavigation navigation)
+        public SkinViewModel(ISkinService skinService, IConnectivity connectivity)
         {
             Title = "CS2 item Viewer";
             _skinService = skinService;
@@ -37,11 +36,6 @@ namespace CS2itemViewer.ViewModel
             allSkins = new List<Skin>();
 
             OpenLinkCommand = new RelayCommand<string>(OpenLink);
-
-            //DummyCommand = new Command(OnDummyCommand);
-
-            _navigation = navigation;
-            ImageTappedCommand = new Command<Skin>(async (skin) => await OnImageTapped(skin));
 
             SteamLoginIDText = "76561198268749335"; // remove later
 
@@ -54,25 +48,16 @@ namespace CS2itemViewer.ViewModel
             GetSkinsCommand.Execute(null);
         }
 
-        //private void OnDummyCommand(object parameter)
-        //{
-        //    Debug.WriteLine("Dummy command executed!");
-        //}
 
-        private async Task OnImageTapped(Skin tappedSkin)
+
+        [RelayCommand]
+        async Task GoToDetails(Skin selectedSkin)
         {
-            Debug.WriteLine("Image tapped!");
-            if (tappedSkin != null)
+            if (selectedSkin != null)
             {
-                try
-                {
-                    // Navigate to the DetailsPage and pass the skin object as a parameter
-                    await _navigation.PushAsync(new DetailsPage(new SkinDetailsViewModel(tappedSkin)));
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine($"Error navigating to DetailsPage: {ex.Message}");
-                }
+                var skinJson = JsonConvert.SerializeObject(selectedSkin);
+                var encodedSkinJson = HttpUtility.UrlEncode(skinJson); // Encode the JSON string
+                await Shell.Current.GoToAsync($"DetailsPage?skin={encodedSkinJson}");
             }
         }
 
@@ -146,18 +131,6 @@ namespace CS2itemViewer.ViewModel
                 IsBusy = false;
                 IsRefreshing = false;
             }
-        }
-
-        [RelayCommand]
-        async Task GoToDetails(Skin skin)
-        {
-            if (skin == null)
-                return;
-
-            await Shell.Current.GoToAsync(nameof(DetailsPage), true, new Dictionary<string, object>
-            {
-                { "Skin", skin }
-            });
         }
 
         [RelayCommand]

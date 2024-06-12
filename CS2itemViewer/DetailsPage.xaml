@@ -6,6 +6,10 @@
              xmlns:viewmodel="clr-namespace:CS2itemViewer.ViewModel"
              x:DataType="viewmodel:SkinDetailsViewModel"         
              Title="Details Page">
+    <ContentPage.BindingContext>
+        <viewmodel:SkinDetailsViewModel />
+    </ContentPage.BindingContext>
+    
     <Grid>
         
         <Grid.RowDefinitions>

@@ -268,7 +268,9 @@
                         <!-- item frame-->
                         <Frame HeightRequest="120" WidthRequest="160" Padding="0" BackgroundColor="Transparent" BorderColor="Transparent">
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding BindingContext.ImageTappedCommand, Source={RelativeSource AncestorType={x:Type CollectionView}}}" CommandParameter="{Binding .}" />
+                                <TapGestureRecognizer 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SkinViewModel}}, Path=GoToDetailsCommand}"
+                                    CommandParameter="{Binding .}"/>       
                             </Frame.GestureRecognizers>
                             <Image Source="{Binding Image}" Aspect="AspectFill" />
                         </Frame>
