@@ -123,11 +123,7 @@
                     <Label Text="Classified" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#d32ce6"/>
                 </StackLayout>
 
-                <!-- price --><!--
-                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="0" >
-                    <Button MaximumWidthRequest="40" MaximumHeightRequest="40" Margin="8,0,0,0"  Text="&#xf062;" FontFamily="FontAwesome"></Button>
-                    <Label Text="sort by price" VerticalOptions="Center" Margin="10,0,0,0"/>
-                </StackLayout>-->
+                <!-- sort by price -->
                 <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="0" >
                     <Button Command="{Binding SortByPriceCommand}" 
                             Text="Sort by Price" 
@@ -137,12 +133,16 @@
                             VerticalOptions="Center"/>
                 </StackLayout>
 
-                <!-- rarity -->
+                <!-- sort by rarity -->
                 <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="2" >
-                    <Button MaximumWidthRequest="40" MaximumHeightRequest="40" Margin="8,0,0,0"  Text="&#xf062;" FontFamily="FontAwesome"></Button>
-                    <Label Text="sort by rarity" VerticalOptions="Center" Margin="10,0,0,0"/>
+                    <Button Command="{Binding SortByRarityCommand}" 
+                            Text="Sort by rarety" 
+                            HorizontalOptions="Center" />
+                    <Switch IsToggled="{Binding IsSortByRarityAscending}" 
+                            HorizontalOptions="End"
+                            VerticalOptions="Center"/>
                 </StackLayout>
-                
+
             </Grid>
             
         </StackLayout>
