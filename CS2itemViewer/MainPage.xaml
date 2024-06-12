@@ -26,23 +26,23 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
+        <!-- latest sell-->
         <Label Text="{Binding TotalPriceLatestSell, StringFormat='Total value: {0} USD'}" 
                Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5"
                HorizontalTextAlignment="Start" 
+               TextColor="#e28735"
                FontSize="Medium"  
                FontAttributes="Bold" 
-               TextColor="Green"
-               Margin="10, -5, 0, 7"/>    
+               Margin="10, -5, 0, 7"/>
 
-        <!-- Label above ScrollView -->
+        <!--search BackgroundColor="#010B1F" -->
         <SearchBar Placeholder="Search..."
-               BackgroundColor="#2B2B2B"
-               TextColor="White"
-               Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
+               Grid.Row="1" Grid.Column="0" 
+               Grid.ColumnSpan="2" 
                HorizontalOptions="Center"
                VerticalOptions="Center"
                WidthRequest="220"
-               Margin="0, 0, -60, 0"
+               Margin="60, 0, 0, 0"
                Text="{Binding SearchText, Mode=TwoWay}"
                 >
             <SearchBar.Behaviors>
@@ -53,21 +53,20 @@
 
         <!-- Filter button -->
         <Button Text="Filter" 
-        Command="{Binding ShowFilterMenuCommand}"
-        IsEnabled="{Binding IsNotBusy}"
-        HorizontalOptions="End" 
-        WidthRequest="62" 
-        HeightRequest="35"
-        Margin="0, 0, 0, 0"
-        Grid.Row="1" Grid.Column="3"/>
+                Command="{Binding ShowFilterMenuCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                HorizontalOptions="End"
+                Margin="0, 0, 0, 0"
+                HeightRequest="40"
+                Grid.Row="1" Grid.Column="3"
+                 />
 
-        <!-- Filter menu -->
+        <!-- Filter menu BackgroundColor="#2B2B2B"-->
         <StackLayout x:Name="FilterMenuContainer" 
              Grid.Row="2" 
              Grid.Column="0" 
              Grid.ColumnSpan="5"
              Margin="0,5,0,0"
-             BackgroundColor="#2B2B2B"
              Padding="0"
              IsVisible="{Binding IsFilterMenuVisible}">
 
@@ -124,40 +123,47 @@
                     <Label Text="Classified" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#d32ce6"/>
                 </StackLayout>
 
+                <!-- price --><!--
                 <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="0" >
                     <Button MaximumWidthRequest="40" MaximumHeightRequest="40" Margin="8,0,0,0"  Text="&#xf062;" FontFamily="FontAwesome"></Button>
-                    <Label Text="sort by price" VerticalOptions="Center" Margin="10,0,0,0" TextColor="White"/>
+                    <Label Text="sort by price" VerticalOptions="Center" Margin="10,0,0,0"/>
+                </StackLayout>-->
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="0" >
+                    <Button Command="{Binding SortByPriceCommand}" 
+                            Text="Sort by Price" 
+                            HorizontalOptions="Center" />
+                    <Switch IsToggled="{Binding IsSortByPriceAscending}" 
+                            HorizontalOptions="End"
+                            VerticalOptions="Center"/>
                 </StackLayout>
 
+                <!-- rarity -->
                 <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="2" >
                     <Button MaximumWidthRequest="40" MaximumHeightRequest="40" Margin="8,0,0,0"  Text="&#xf062;" FontFamily="FontAwesome"></Button>
-                    <Label Text="sort by rarity" VerticalOptions="Center" Margin="10,0,0,0" TextColor="White"/>
+                    <Label Text="sort by rarity" VerticalOptions="Center" Margin="10,0,0,0"/>
                 </StackLayout>
                 
             </Grid>
             
         </StackLayout>
 
-        <!-- Login button -->
+        <!-- SID button -->
+
         <Button Command="{Binding ShowLoginMenuCommand}"
                 IsEnabled="{Binding IsNotBusy}"
-                Text="Login" 
+                Text="SID" 
                 Grid.Row="1" 
                 Grid.Column="4" 
+                HeightRequest="40"
                 HorizontalOptions="End" 
-                WidthRequest="52" 
-                HeightRequest="52"
-                CornerRadius="25"
-                Padding="8,0,8,0"
                 Margin="0, 0, 10, 0"/>
 
-        <!-- Login menu -->
+        <!-- ID menu              BackgroundColor="#2B2B2B"-->
         <StackLayout x:Name="LoginMenuContainer" 
              Grid.Row="2" 
              Grid.Column="0" 
              Grid.ColumnSpan="5"
              Margin="0,5,0,0"
-             BackgroundColor="#2B2B2B"
              Padding="0"
              IsVisible="{Binding IsLoginMenuVisible}">
 
@@ -182,15 +188,13 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
+                    <!-- label steam id-->
                     <Label Text="Enter Steam-ID: " 
                            VerticalOptions="Center" 
-                           Margin="10,0,0,0" 
-                           TextColor="#b0c3d9" 
+                           Margin="10,0,0,0"
                            Grid.Column="0"/>
-
+                    <!-- steam id input  BackgroundColor="#2B2B2B"-->
                     <Entry Placeholder="Steam-ID"
-                           BackgroundColor="#2B2B2B"
-                           TextColor="White"
                            WidthRequest="230"
                            HorizontalTextAlignment="Center"
                            Margin="7, 10, 0, 10"
@@ -200,10 +204,11 @@
                 </Grid>
 
                 <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="5" >
-                    <Label VerticalOptions="Center" Margin="38,10,0,10" TextColor="#b0c3d9" >
+                    <Label VerticalOptions="Center" Margin="38,10,0,10" >
                         <Label.FormattedText >
                             <FormattedString >
-                                <Span Text="Get Steam-ID Here" TextColor="LightBlue" TextDecorations="Underline" >
+                                <!-- link  SID-->
+                                <Span Text="Get Steam-ID Here" TextColor="#e28735" TextDecorations="Underline" >
                                     <Span.GestureRecognizers>
                                         <TapGestureRecognizer 
                                             Command="{Binding OpenLinkCommand}" 
@@ -260,8 +265,8 @@
                                 <Image />
                             </StackLayout>
                         </Grid>
-
-                        <Frame HeightRequest="120" WidthRequest="160" BackgroundColor="Transparent" BorderColor="Transparent" Padding="0">
+                        <!-- item frame-->
+                        <Frame HeightRequest="120" WidthRequest="160" Padding="0" BackgroundColor="Transparent" BorderColor="Transparent">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding BindingContext.ImageTappedCommand, Source={RelativeSource AncestorType={x:Type CollectionView}}}" CommandParameter="{Binding .}" />
                             </Frame.GestureRecognizers>
@@ -269,11 +274,11 @@
                         </Frame>
 
                         <Grid Margin="0,20,0,0">
-                            <!-- Horizontal line -->
+                            <!-- Horizontal line-->
                             <BoxView Grid.Row="1" 
                                      Grid.ColumnSpan="5" 
                                      HeightRequest="1" 
-                                     BackgroundColor="DarkGray" 
+                                     BackgroundColor="#CECECE"
                                      HorizontalOptions="FillAndExpand" 
                                      VerticalOptions="End"/>
                         </Grid>

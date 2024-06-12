@@ -1,0 +1,29 @@
+lichtBlauw 52 129 169
+# 3481A9
+
+lichtGrijs 217 217 217
+# D9D9D9
+
+donkerGrijs 206 206 206
+# CECECE
+
+donkerOranje 219 122 49
+# DB7A31
+
+oranje 226 135 53
+# E28735
+
+lichtOranje 249 197 138
+# F9C58A
+
+lichtDonkerBlauw 79 85 109
+# 4F5564
+
+donkerBlauw 66 72 98
+# 424862 
+
+logoBlauw
+# 010B1F
+
+zwart 30 32 46
+# 1E202E

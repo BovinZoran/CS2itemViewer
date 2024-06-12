@@ -17,7 +17,9 @@ namespace CS2itemViewer.ViewModel
         private readonly ISkinService _skinService;
         private readonly IConnectivity _connectivity;
         private List<Skin> allSkins;
+        private bool _isSortByPriceAscending = false;
 
+        public ICommand SortByPriceCommand => new Command(SortByPrice);
         public ICommand OpenLinkCommand { get; }
         public Command OnSearchedCommand { get; }
         public ICommand LoadLoginCommand { get; }
@@ -73,7 +75,6 @@ namespace CS2itemViewer.ViewModel
                 }
             }
         }
-
 
         private void UpdateSteamID()
         {
@@ -166,6 +167,16 @@ namespace CS2itemViewer.ViewModel
                 ? allSkins.Where(IsSkinVisible).ToList()
                 : allSkins.Where(skin => skin.MarketName.Contains(SearchText, StringComparison.OrdinalIgnoreCase) && IsSkinVisible(skin)).ToList();
 
+            //sortby price
+            if (IsSortByPriceAscending)
+            {
+                filteredSkins = filteredSkins.OrderBy(skin => skin.PriceLatestSell).ToList();
+            }
+            else
+            {
+                filteredSkins = filteredSkins.OrderByDescending(skin => skin.PriceLatestSell).ToList();
+            }
+
             Skins.Clear();
             foreach (var skin in filteredSkins)
             {
@@ -255,8 +266,6 @@ namespace CS2itemViewer.ViewModel
             }
         }
 
-
-
         private bool _isFilterMenuVisible;
         public bool IsFilterMenuVisible
         {
@@ -295,7 +304,6 @@ namespace CS2itemViewer.ViewModel
             }
         }
 
-
         bool IsSkinVisible(Skin skin)
         {
             if ((IsConsumerGradeChecked && skin.Color == "#b0c3d9") ||
@@ -304,15 +312,22 @@ namespace CS2itemViewer.ViewModel
                 (IsRestrictedChecked && skin.Color == "#8847ff") ||
                 (IsClassifiedChecked && skin.Color == "#d32ce6") ||
                 (IsCovertChecked && skin.Color == "#eb4b4b") ||
-                //(IsRareSpecialChecked && skin.Color == "#e4ae39") ||   //gwn uit case is goud 
                 (IsContrabandChecked && skin.Color == "#e4ae39"))
             {
                 return true;
             }
-
             return false;
         }
 
+        public bool IsSortByPriceAscending
+        {
+            get => _isSortByPriceAscending;
+            set
+            {
+                SetProperty(ref _isSortByPriceAscending, value);
+                FilterSkins();
+            }
+        }
        
 
         [RelayCommand]
@@ -321,5 +336,9 @@ namespace CS2itemViewer.ViewModel
             FilterSkins();
         }
 
+        private void SortByPrice()
+        {
+            IsSortByPriceAscending = !IsSortByPriceAscending;
+        }
     }
 }
