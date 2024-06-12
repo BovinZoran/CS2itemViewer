@@ -22,8 +22,7 @@ namespace CS2itemViewer.ViewModel
         private readonly IConnectivity _connectivity;
         private List<Skin> allSkins;
         private bool _isSortByPriceAscending = false;
-        private bool _isSortByRarityAscending= false;
-        private bool _isSortByPriceAscending = false;  
+        private bool _isSortByRarityAscending= false;  
 
         public ICommand SortByPriceCommand => new Command(SortByPrice);
         public ICommand SortByRarityCommand => new Command(SortByRarity);
