@@ -68,3 +68,5 @@ Week 14-15 : 16 uren
 - cosmetic changes (margins, layout, etc.)
 - sorting by price and or rarity verder opgelost, elke kan nu apart getoggled worden
 
+Totaal aantal: 59 uren
+
