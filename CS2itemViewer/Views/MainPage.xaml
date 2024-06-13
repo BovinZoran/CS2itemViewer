@@ -216,7 +216,7 @@
                                Margin="10,0,0,0"
                                Grid.Column="0"/>
 
-                            <!-- steam id input  BackgroundColor="#2B2B2B"-->
+                            <!-- steam id input -->
                             <Entry Placeholder="Steam-ID"
                                WidthRequest="230"
                                HorizontalTextAlignment="Center"

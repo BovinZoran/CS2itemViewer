@@ -42,7 +42,6 @@ namespace CS2itemViewer.Model
             // Remove HTML tags using regex
             return Regex.Replace(input, "<.*?>", string.Empty);
         }
-
     }
 
     public class Description
