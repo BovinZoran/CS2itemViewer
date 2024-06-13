@@ -6,9 +6,8 @@
              xmlns:viewmodel="clr-namespace:CS2itemViewer.ViewModel"
              x:DataType="viewmodel:SkinDetailsViewModel"        
              Title="Details Page">
-    
-    <Grid>
 
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -23,45 +22,35 @@
         </Grid.ColumnDefinitions>
 
         <ScrollView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5">
-
             <StackLayout Padding="10" Spacing="7">
-
                 <Grid Padding="10" VerticalOptions="Start">
                     <StackLayout>
                         <Label Text="{Binding MarketName}" HorizontalTextAlignment="Center" FontSize="Medium"  FontAttributes="Bold" TextColor="{Binding Color}"/>
                     </StackLayout>
                 </Grid>
-
                 <Grid>
                     <StackLayout>
                         <Label Text="{Binding ItemName, StringFormat='Item Name: {0}'}" />
                     </StackLayout>
                 </Grid>
-
                 <Grid>
                     <Label Text="{Binding DescriptionFloat}" />
                 </Grid>
-
                 <Grid>
                     <Label Text="{Binding DescriptionText}" />
                 </Grid>
-
                 <Grid>
                     <StackLayout>
                         <Label Text="{Binding PriceLatestSell, StringFormat='Latest selling price: {0} USD'}" FontAttributes="Bold" />
                         <Image />
                     </StackLayout>
                 </Grid>
-
                 <Grid WidthRequest="420" HeightRequest="300">
                     <Image Source="{Binding Image}" Aspect="AspectFill">
                     </Image>
                 </Grid>
-
             </StackLayout>
-
         </ScrollView>
-
     </Grid>
-
+    
 </ContentPage>

@@ -5,12 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:CS2itemViewer"
     Shell.FlyoutBehavior="Disabled"
-    Title="CS2itemViewer"
-    
-    
-    >
+    Title="CS2itemViewer" >
    
-
     <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"

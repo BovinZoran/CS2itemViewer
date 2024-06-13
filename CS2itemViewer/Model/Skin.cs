@@ -43,13 +43,4 @@ namespace CS2itemViewer.Model
             return Regex.Replace(input, "<.*?>", string.Empty);
         }
     }
-
-    public class Description
-    {
-        [JsonPropertyName("type")]
-        public string Type { get; set; }
-
-        [JsonPropertyName("value")]
-        public string Value { get; set; }
-    }
 }

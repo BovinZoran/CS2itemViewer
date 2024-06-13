@@ -25,7 +25,6 @@
 
     <Style TargetType="Button">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource PrimaryDarkText}}" />
-        <!--<Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}" />-->
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource lichtBlauw}, Dark={StaticResource oranje}}" />
         
         <Setter Property="FontFamily" Value="OpenSansRegular"/>
@@ -265,15 +264,17 @@
     </Style>
 
     <Style TargetType="RefreshView">
-        <Setter Property="RefreshColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray200}}" />
+        <Setter Property="RefreshColor" Value="{AppThemeBinding Light={StaticResource oranje}, Dark={StaticResource oranje}}" />
     </Style>
 
     <Style TargetType="SearchBar">
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource lichtBlauw}, Dark=Transparent}" />
+        
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Black}}" />
         <Setter Property="PlaceholderColor" Value="{StaticResource Gray500}" />
         <Setter Property="CancelButtonColor" Value="{StaticResource Gray500}" />
         <!--<Setter Property="BackgroundColor" Value="Transparent" />-->
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource lichtBlauw}, Dark=Transparent}" />
+        
         <Setter Property="FontFamily" Value="OpenSansRegular" />
         <Setter Property="FontSize" Value="14" />
         <Setter Property="MinimumHeightRequest" Value="44"/>
@@ -401,15 +402,12 @@
     </Style>
 
     <Style TargetType="Shell" ApplyToDerivedTypes="True">
-        
-        <Setter Property="Shell.ForegroundColor" Value="{OnPlatform WinUI={StaticResource Primary}, Default={StaticResource White}}" />
         <!--title color here-->
-        <!--<Setter Property="Shell.TitleColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource SecondaryDarkText}}" />-->
         <Setter Property="Shell.TitleColor" Value="{AppThemeBinding Light={StaticResource lichtBlauw}, Dark={StaticResource oranje}}" />
         <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Light={StaticResource lichtGrijs}, Dark={StaticResource zwart}}" />
         <Setter Property="Shell.ForegroundColor" Value="{AppThemeBinding Light={StaticResource lichtBlauw}, Dark={StaticResource oranje}}" />
-       
 
+        <Setter Property="Shell.ForegroundColor" Value="{OnPlatform WinUI={StaticResource Primary}, Default={StaticResource White}}" />
         <Setter Property="Shell.DisabledColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray950}}" />
         <Setter Property="Shell.UnselectedColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray200}}" />
         <Setter Property="Shell.NavBarHasShadow" Value="False" />
