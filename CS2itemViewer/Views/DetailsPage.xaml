@@ -9,9 +9,9 @@
     <ContentPage.BindingContext>
         <viewmodel:SkinDetailsViewModel />
     </ContentPage.BindingContext>
-    
+
     <Grid>
-        
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -26,9 +26,9 @@
         </Grid.ColumnDefinitions>
 
         <ScrollView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5">
-            
+
             <StackLayout Padding="10" Spacing="7">
-                
+
                 <Grid Padding="10" VerticalOptions="Start">
                     <StackLayout>
                         <Label Text="{Binding MarketName}" HorizontalTextAlignment="Center" FontSize="Medium"  FontAttributes="Bold" TextColor="{Binding Color}"/>
@@ -66,5 +66,5 @@
         </ScrollView>
 
     </Grid>
-    
+
 </ContentPage>

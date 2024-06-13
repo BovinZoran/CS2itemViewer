@@ -9,21 +9,22 @@
              Title="{Binding Title}">
 
     <Page.Behaviors>
-
         <toolkit:StatusBarBehavior 
             StatusBarColor="{AppThemeBinding Light=#D9D9D9, Dark=#DB7A31}" 
             StatusBarStyle="{AppThemeBinding Light=LightContent, Dark=DarkContent}"/>
     </Page.Behaviors>
-    
+
     <ContentPage.Content>
         <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding GetSkinsCommand}">
             <Grid>
-            <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+
+                <!-- Defining grid for entire page-->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -34,7 +35,7 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- latest sell-->
-        <Label Text="{Binding TotalPriceLatestSell, StringFormat='Total value: {0} USD'}" 
+                <Label Text="{Binding TotalPriceLatestSell, StringFormat='Total value: {0} USD'}" 
                Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5"
                HorizontalTextAlignment="Start" 
                TextColor="#e28735"
@@ -42,13 +43,13 @@
                FontAttributes="Bold" 
                Margin="10, -5, 0, 7"/>
 
-        <!--search BackgroundColor="#010B1F" -->
+                <!--search BackgroundColor="#010B1F" -->
                 <Frame CornerRadius="5" Padding="0"
                        Grid.Row="1" Grid.Column="0" 
                          Grid.ColumnSpan="2" 
                        WidthRequest="280"
                        >
-        <SearchBar Placeholder="Search..."
+                    <SearchBar Placeholder="Search..."
                
                HorizontalOptions="Center"
                VerticalOptions="Center"
@@ -60,11 +61,11 @@
                         <SearchBar.Behaviors>
                             <toolkit:EventToCommandBehavior EventName="TextChanged" Command="{Binding OnSearchedCommand}" />
                         </SearchBar.Behaviors>
-          </SearchBar>
+                    </SearchBar>
                 </Frame>
 
                 <!-- Filter button -->
-        <Button Text="Filter" 
+                <Button Text="Filter" 
                 Command="{Binding ShowFilterMenuCommand}"
                 IsEnabled="{Binding IsNotBusy}"
                 HorizontalOptions="End"
@@ -73,8 +74,8 @@
                 Grid.Row="1" Grid.Column="3"
                  />
 
-        <!-- Filter menu BackgroundColor="#2B2B2B"-->
-        <StackLayout x:Name="FilterMenuContainer" 
+                <!-- Filter menu BackgroundColor="#2B2B2B"-->
+                <StackLayout x:Name="FilterMenuContainer" 
              Grid.Row="2" 
              Grid.Column="0" 
              Grid.ColumnSpan="5"
@@ -82,65 +83,65 @@
              Padding="0"
              IsVisible="{Binding IsFilterMenuVisible}">
 
-            <Grid Margin="0,0,0,10"
+                    <Grid Margin="0,0,0,10"
                   BackgroundColor="#40010B1F">
-                
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
 
-                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="0" Grid.Column="0">
-                    <CheckBox IsChecked="{Binding IsConsumerGradeChecked, Mode=TwoWay}" />
-                    <Label Text="Consumer Grade" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#b0c3d9"/>
-                </StackLayout>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
 
-                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="0" Grid.Column="2" >
-                    <CheckBox IsChecked="{Binding IsRestrictedChecked, Mode=TwoWay}" />
-                    <Label Text="Restricted" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#8847ff"/>
-                </StackLayout>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="0" Grid.Column="0">
+                            <CheckBox IsChecked="{Binding IsConsumerGradeChecked, Mode=TwoWay}" />
+                            <Label Text="Consumer Grade" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#b0c3d9"/>
+                        </StackLayout>
 
-                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="1" Grid.Column="0">
-                    <CheckBox IsChecked="{Binding IsIndustrialGradeChecked, Mode=TwoWay}" />
-                    <Label Text="Industrial Grade" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#5e98d9"/>
-                </StackLayout>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="0" Grid.Column="2" >
+                            <CheckBox IsChecked="{Binding IsRestrictedChecked, Mode=TwoWay}" />
+                            <Label Text="Restricted" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#8847ff"/>
+                        </StackLayout>
 
-                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="1" Grid.Column="2" >
-                    <CheckBox IsChecked="{Binding IsCovertChecked, Mode=TwoWay}" />
-                    <Label Text="Covert" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#eb4b4b"/>
-                </StackLayout>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="1" Grid.Column="0">
+                            <CheckBox IsChecked="{Binding IsIndustrialGradeChecked, Mode=TwoWay}" />
+                            <Label Text="Industrial Grade" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#5e98d9"/>
+                        </StackLayout>
 
-                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="3" Grid.Column="0">
-                    <CheckBox IsChecked="{Binding IsHighGradeChecked, Mode=TwoWay}" />
-                    <Label Text="High Grade" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#4b69ff"/>
-                </StackLayout>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="1" Grid.Column="2" >
+                            <CheckBox IsChecked="{Binding IsCovertChecked, Mode=TwoWay}" />
+                            <Label Text="Covert" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#eb4b4b"/>
+                        </StackLayout>
 
-                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="3" Grid.Column="2" >
-                    <CheckBox IsChecked="{Binding IsContrabandChecked, Mode=TwoWay}" />
-                    <Label Text="Contraband" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#f1ae35"/>
-                </StackLayout>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="3" Grid.Column="0">
+                            <CheckBox IsChecked="{Binding IsHighGradeChecked, Mode=TwoWay}" />
+                            <Label Text="High Grade" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#4b69ff"/>
+                        </StackLayout>
 
-                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="4" Grid.Column="0">
-                    <CheckBox IsChecked="{Binding IsClassifiedChecked, Mode=TwoWay}" />
-                    <Label Text="Classified" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#d32ce6"/>
-                </StackLayout>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="3" Grid.Column="2" >
+                            <CheckBox IsChecked="{Binding IsContrabandChecked, Mode=TwoWay}" />
+                            <Label Text="Contraband" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#f1ae35"/>
+                        </StackLayout>
 
-                <!-- sort by price -->
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="4" Grid.Column="0">
+                            <CheckBox IsChecked="{Binding IsClassifiedChecked, Mode=TwoWay}" />
+                            <Label Text="Classified" VerticalOptions="Center" Margin="0,0,0,0" TextColor="#d32ce6"/>
+                        </StackLayout>
+
+                        <!-- sort by price -->
 
                         <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,10">
-                     <CheckBox IsChecked="{Binding SortByPriceChecked, Mode=TwoWay}" />
-                     <Button 
+                            <CheckBox IsChecked="{Binding SortByPriceChecked, Mode=TwoWay}" />
+                            <Button 
                          Command="{Binding SortByPriceAscendingDescendingCommand}" 
                          Text="{Binding PriceAscendingDescending}" 
                          IsEnabled="{Binding IsNotBusy}"
@@ -149,9 +150,9 @@
                          Margin="0,0,0,0"
                          WidthRequest="120"
                          HeightRequest="40"/>
-                 </StackLayout>
+                        </StackLayout>
 
-                <!-- sort by rarity -->
+                        <!-- sort by rarity -->
 
                         <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Margin="0,0,0,10">
                             <CheckBox IsChecked="{Binding SortByRarityChecked, Mode=TwoWay}" />
@@ -166,12 +167,12 @@
                         </StackLayout>
 
                     </Grid>
-            
-        </StackLayout>
 
-        <!-- SID button -->
+                </StackLayout>
 
-        <Button Command="{Binding ShowLoginMenuCommand}"
+                <!-- SID button -->
+
+                <Button Command="{Binding ShowLoginMenuCommand}"
                 IsEnabled="{Binding IsNotBusy}"
                 Text="SID" 
                 Grid.Row="1" 
@@ -180,8 +181,8 @@
                 HorizontalOptions="End" 
                 Margin="0, 0, 10, 0"/>
 
-        <!-- ID menu              BackgroundColor="#2B2B2B"-->
-        <StackLayout x:Name="LoginMenuContainer" 
+                <!-- ID menu              BackgroundColor="#2B2B2B"-->
+                <StackLayout x:Name="LoginMenuContainer" 
              Grid.Row="2" 
              Grid.Column="0" 
              Grid.ColumnSpan="5"
@@ -189,62 +190,62 @@
              Padding="0"
              IsVisible="{Binding IsLoginMenuVisible}">
 
-            <!-- Menu content -->
-            <Grid
+                    <!-- Menu content -->
+                    <Grid
                 BackgroundColor="#40010B1F"
                 >
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
 
-                <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5">
+                        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5">
 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
 
-                    <!-- label steam id-->
-                    <Label Text="Enter Steam-ID: " 
+                            <!-- label steam id-->
+                            <Label Text="Enter Steam-ID: " 
                            VerticalOptions="Center" 
                            Margin="10,0,0,0"
                            Grid.Column="0"/>
-                    <!-- steam id input  BackgroundColor="#2B2B2B"-->
-                    <Entry Placeholder="Steam-ID"
+                            <!-- steam id input  BackgroundColor="#2B2B2B"-->
+                            <Entry Placeholder="Steam-ID"
                            WidthRequest="230"
                            HorizontalTextAlignment="Center"
                            Margin="7, 10, 0, 10"
                            Text="{Binding SteamLoginIDText, Mode=TwoWay}"
                            Grid.Column="1"/>
 
-                </Grid>
+                        </Grid>
 
-                <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="5" >
-                    <Label VerticalOptions="Center" Margin="38,10,0,10" >
-                        <Label.FormattedText >
-                            <FormattedString >
-                                <!-- link  SID-->
-                                <Span Text="Get Steam-ID Here" TextColor="#e28735" TextDecorations="Underline" >
-                                    <Span.GestureRecognizers>
-                                        <TapGestureRecognizer 
+                        <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="5" >
+                            <Label VerticalOptions="Center" Margin="38,10,0,10" >
+                                <Label.FormattedText >
+                                    <FormattedString >
+                                        <!-- link  SID-->
+                                        <Span Text="Get Steam-ID Here" TextColor="#e28735" TextDecorations="Underline" >
+                                            <Span.GestureRecognizers>
+                                                <TapGestureRecognizer 
                                             Command="{Binding OpenLinkCommand}" 
                                             CommandParameter="https://store.steampowered.com/account/" />
-                                    </Span.GestureRecognizers>
-                                </Span>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                </Grid>
+                                            </Span.GestureRecognizers>
+                                        </Span>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Grid>
 
-                <Button Command="{Binding LoadLoginCommand}"
+                        <Button Command="{Binding LoadLoginCommand}"
                         IsEnabled="{Binding IsNotBusy}"
                         Text="load" 
                         Grid.Row="1" 
@@ -256,66 +257,66 @@
                         Padding="8,0,8,0"
                         Margin="0, 0, 7, 0"/>
 
-            </Grid>
+                    </Grid>
 
-        </StackLayout>
+                </StackLayout>
 
-        <CollectionView Grid.Row="3" 
+                <CollectionView Grid.Row="3" 
                         Grid.Column="0" 
                         Grid.ColumnSpan="5"
                         ItemsSource="{Binding Skins}"
                         SelectionMode="None"
                         Margin="0,7,0,0">
 
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:Skin">
-                    <StackLayout Padding="10" Spacing="7">
-                        
-                        <Grid Padding="10" VerticalOptions="Start">
-                            <StackLayout>
-                                <Label Text="{Binding MarketName}" 
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Skin">
+                            <StackLayout Padding="10" Spacing="7">
+
+                                <Grid Padding="10" VerticalOptions="Start">
+                                    <StackLayout>
+                                        <Label Text="{Binding MarketName}" 
                                        HorizontalTextAlignment="Center" 
                                        FontSize="Medium"  
                                        FontAttributes="Bold" 
                                        TextColor="{Binding Color}"/>
-                            </StackLayout>
-                        </Grid>
+                                    </StackLayout>
+                                </Grid>
 
-                        <Grid>
-                            <StackLayout>
-                                <Label Text="{Binding PriceLatestSell, StringFormat='Latest selling price: {0} USD'}" 
+                                <Grid>
+                                    <StackLayout>
+                                        <Label Text="{Binding PriceLatestSell, StringFormat='Latest selling price: {0} USD'}" 
                                        FontAttributes="Bold" 
                                        HorizontalTextAlignment="Center"/>
-                                <Image />
-                            </StackLayout>
-                        </Grid>
-                        <!-- item frame-->
-                        <Frame HeightRequest="120" WidthRequest="160" Padding="0" BackgroundColor="Transparent" BorderColor="Transparent">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer 
+                                        <Image />
+                                    </StackLayout>
+                                </Grid>
+                                <!-- item frame-->
+                                <Frame HeightRequest="120" WidthRequest="160" Padding="0" BackgroundColor="Transparent" BorderColor="Transparent">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer 
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SkinViewModel}}, Path=GoToDetailsCommand}"
-                                    CommandParameter="{Binding .}"/>       
-                            </Frame.GestureRecognizers>
-                            <Image Source="{Binding Image}" Aspect="AspectFill" />
-                        </Frame>
+                                    CommandParameter="{Binding .}"/>
+                                    </Frame.GestureRecognizers>
+                                    <Image Source="{Binding Image}" Aspect="AspectFill" />
+                                </Frame>
 
-                        <Grid Margin="0,20,0,0">
-                            <!-- Horizontal line-->
-                            <BoxView Grid.Row="1" 
+                                <Grid Margin="0,20,0,0">
+                                    <!-- Horizontal line-->
+                                    <BoxView Grid.Row="1" 
                                      Grid.ColumnSpan="5" 
                                      HeightRequest="1" 
                                      BackgroundColor="#CECECE"
                                      HorizontalOptions="FillAndExpand" 
                                      VerticalOptions="End"/>
-                        </Grid>
-                        
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </Grid>
-        
-    </RefreshView>
-        </ContentPage.Content>
+                                </Grid>
+
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+
+        </RefreshView>
+    </ContentPage.Content>
 
 </ContentPage>
