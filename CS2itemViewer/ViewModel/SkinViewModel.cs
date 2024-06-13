@@ -116,6 +116,7 @@ namespace CS2itemViewer.ViewModel
                 }
 
                 IsBusy = true;
+                IsRefreshing = true; // Start refreshing
                 var skins = await _skinService.GetSkins();
 
                 if (skins == null)
@@ -132,7 +133,7 @@ namespace CS2itemViewer.ViewModel
             finally
             {
                 IsBusy = false;
-                IsRefreshing = false;
+                IsRefreshing = false; // Stop refreshing
             }
         }
 

@@ -6,7 +6,10 @@
     xmlns:local="clr-namespace:CS2itemViewer"
     Shell.FlyoutBehavior="Disabled"
     Title="CS2itemViewer"
+    
+    
     >
+   
 
     <ShellContent
         Title="Home"

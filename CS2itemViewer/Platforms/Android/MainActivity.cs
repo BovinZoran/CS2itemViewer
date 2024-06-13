@@ -1,5 +1,6 @@
 ﻿using Android.App;
 using Android.Content.PM;
+using Android.Content.Res;
 using Android.OS;
 
 namespace CS2itemViewer
@@ -12,8 +13,8 @@ namespace CS2itemViewer
             base.OnCreate(savedInstanceState);
             // Add this line to lock orientation to portrait
             RequestedOrientation = Android.Content.PM.ScreenOrientation.Portrait;
-            // Load the main application
-            
+          // Load the main application content       
+
         }
     }
 }

@@ -8,25 +8,32 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              Title="{Binding Title}">
 
-    <Grid>
-        
+    <Page.Behaviors>
 
-        <Grid.RowDefinitions>
+        <toolkit:StatusBarBehavior 
+            StatusBarColor="{AppThemeBinding Light=#D9D9D9, Dark=#DB7A31}" 
+            StatusBarStyle="{AppThemeBinding Light=LightContent, Dark=DarkContent}"/>
+    </Page.Behaviors>
+    
+    <ContentPage.Content>
+        <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding GetSkinsCommand}">
+            <Grid>
+            <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-        <!-- latest sell-->
+                <!-- latest sell-->
         <Label Text="{Binding TotalPriceLatestSell, StringFormat='Total value: {0} USD'}" 
                Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5"
                HorizontalTextAlignment="Start" 
@@ -36,22 +43,27 @@
                Margin="10, -5, 0, 7"/>
 
         <!--search BackgroundColor="#010B1F" -->
+                <Frame CornerRadius="5" Padding="0"
+                       Grid.Row="1" Grid.Column="0" 
+                         Grid.ColumnSpan="2" 
+                       WidthRequest="280"
+                       >
         <SearchBar Placeholder="Search..."
-               Grid.Row="1" Grid.Column="0" 
-               Grid.ColumnSpan="2" 
+               
                HorizontalOptions="Center"
                VerticalOptions="Center"
-               WidthRequest="220"
+               WidthRequest="240"
                Margin="60, 0, 0, 0"
                Text="{Binding SearchText, Mode=TwoWay}"
-                >
-            <SearchBar.Behaviors>
-                    <toolkit:EventToCommandBehavior EventName="TextChanged" Command="{Binding OnSearchedCommand}" />
-               </SearchBar.Behaviors>
-                
-        </SearchBar>
+               
+                   >
+                        <SearchBar.Behaviors>
+                            <toolkit:EventToCommandBehavior EventName="TextChanged" Command="{Binding OnSearchedCommand}" />
+                        </SearchBar.Behaviors>
+          </SearchBar>
+                </Frame>
 
-        <!-- Filter button -->
+                <!-- Filter button -->
         <Button Text="Filter" 
                 Command="{Binding ShowFilterMenuCommand}"
                 IsEnabled="{Binding IsNotBusy}"
@@ -290,4 +302,8 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
     </Grid>
+        
+    </RefreshView>
+        </ContentPage.Content>
+
 </ContentPage>
