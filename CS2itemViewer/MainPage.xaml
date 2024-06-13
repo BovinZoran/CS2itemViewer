@@ -82,7 +82,8 @@
              Padding="0"
              IsVisible="{Binding IsFilterMenuVisible}">
 
-            <Grid Margin="0,0,0,10">
+            <Grid Margin="0,0,0,10"
+                  BackgroundColor="#40010B1F">
                 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -136,7 +137,7 @@
                 </StackLayout>
 
                 <!-- sort by price -->
-                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="0" >
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="0" Margin="0,0,0,10" >
                     <Button Command="{Binding SortByPriceCommand}" 
                             Text="Sort by Price" 
                             HorizontalOptions="Center" />
@@ -146,7 +147,7 @@
                 </StackLayout>
 
                 <!-- sort by rarity -->
-                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="2" >
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="2" Margin="0,0,0,10">
                     <Button Command="{Binding SortByRarityCommand}" 
                             Text="Sort by rarety" 
                             HorizontalOptions="Center" />
@@ -180,7 +181,9 @@
              IsVisible="{Binding IsLoginMenuVisible}">
 
             <!-- Menu content -->
-            <Grid>
+            <Grid
+                BackgroundColor="#40010B1F"
+                >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
