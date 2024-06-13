@@ -138,29 +138,31 @@
 
                 <!-- sort by price -->
 
-                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
-                     <!--<CheckBox IsChecked="{Binding SortByPriceChecked, Mode=TwoWay}" />-->
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,10">
+                     <CheckBox IsChecked="{Binding SortByPriceChecked, Mode=TwoWay}" />
                      <Button 
                          Command="{Binding SortByPriceAscendingDescendingCommand}" 
                          Text="{Binding PriceAscendingDescending}" 
                          IsEnabled="{Binding IsNotBusy}"
                          VerticalOptions="Center" 
                          HorizontalOptions="Center"
-                         Margin="10,0,0,0"
-                         WidthRequest="160"/>
+                         Margin="0,0,0,0"
+                         WidthRequest="120"
+                         HeightRequest="40"/>
                  </StackLayout>
 
                 <!-- sort by rarity -->
 
-                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2">
-                            <!--<CheckBox IsChecked="{Binding SortByRarityChecked, Mode=TwoWay}" />-->
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Margin="0,0,0,10">
+                            <CheckBox IsChecked="{Binding SortByRarityChecked, Mode=TwoWay}" />
                             <Button 
                                 Command="{Binding SortByRarityAscendingDescendingCommand}"
                                 Text="{Binding RarityAscendingDescending}" 
                                 VerticalOptions="Center" 
                                 HorizontalOptions="End"
-                                Margin="10,0,0,0" 
-                                WidthRequest="160"/>
+                                Margin="0,0,0,0" 
+                                WidthRequest="120"
+                                HeightRequest="40"/>
                         </StackLayout>
 
                     </Grid>

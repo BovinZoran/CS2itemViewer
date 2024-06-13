@@ -55,22 +55,13 @@ namespace CS2itemViewer.ViewModel
             GetSkinsCommand.Execute(null);
         }
 
-        public ICommand TestingCommand => new Command(TestCommand);
-        private void TestCommand()
-        {
-            Console.WriteLine("oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
-        }
-
-
-
-
         public ICommand SortByPriceAscendingDescendingCommand => new Command(SortByPriceAscendingDescending);
-        private string _priceAscendingDescending = "Price Ascending";
+        private string _priceAscendingDescending = "Price Asc";
         private void SortByPriceAscendingDescending()
         {
            
             IsSortByPriceAscending = !IsSortByPriceAscending;
-            PriceAscendingDescending = IsSortByPriceAscending ? "Price Descending" : "Price Ascending";
+            PriceAscendingDescending = IsSortByPriceAscending ? "Price Desc" : "Price Asc";
 
         }
         public string PriceAscendingDescending
@@ -82,12 +73,12 @@ namespace CS2itemViewer.ViewModel
 
 
         public ICommand SortByRarityAscendingDescendingCommand => new Command(SortByRarityAscendingDescending);
-        private string _rarityAscendingDescending = "Rarity Ascending";
+        private string _rarityAscendingDescending = "Rarity Asc";
         private void SortByRarityAscendingDescending()
         {
      
                 IsSortByRarityAscending = !IsSortByRarityAscending;
-                RarityAscendingDescending = IsSortByRarityAscending ? "Rarity Descending" : "Rarity Ascending";   
+                RarityAscendingDescending = IsSortByRarityAscending ? "Rarity Desc" : "Rarity Asc";   
 
         }
         public string RarityAscendingDescending
@@ -95,8 +86,6 @@ namespace CS2itemViewer.ViewModel
             get => _rarityAscendingDescending;
             set => SetProperty(ref _rarityAscendingDescending, value);
         }
-
-
 
 
         [RelayCommand]
@@ -190,7 +179,9 @@ namespace CS2itemViewer.ViewModel
                 ? allSkins.Where(IsSkinVisible).ToList()
                 : allSkins.Where(skin => skin.MarketName.Contains(SearchText, StringComparison.OrdinalIgnoreCase) && IsSkinVisible(skin)).ToList();
 
-            // Sort by price
+            if(SortByPriceChecked)
+            {
+               // Sort by price
             if (IsSortByPriceAscending)
             {
                 filteredSkins = filteredSkins.OrderBy(skin => skin.PriceLatestSell).ToList();
@@ -199,22 +190,31 @@ namespace CS2itemViewer.ViewModel
             {
                 filteredSkins = filteredSkins.OrderByDescending(skin => skin.PriceLatestSell).ToList();
             }
+            }
+            
 
-            // Sort by rarity if toggled
-            if (IsSortByRarityAscending)
+            if (SortByRarityChecked)
             {
-                filteredSkins = filteredSkins.OrderBy(skin => GetRarityOrder(skin.Color)).ToList();
-            }
-            else
-            {
-                filteredSkins = filteredSkins.OrderByDescending(skin => GetRarityOrder(skin.Color)).ToList();
+                // Sort by rarity if toggled
+                if (IsSortByRarityAscending)
+                {
+                    filteredSkins = filteredSkins.OrderBy(skin => GetRarityOrder(skin.Color)).ToList();
+                }
+                else
+                {
+                    filteredSkins = filteredSkins.OrderByDescending(skin => GetRarityOrder(skin.Color)).ToList();
+                }
             }
 
-            Skins.Clear();
-            foreach (var skin in filteredSkins)
-            {
-                Skins.Add(skin);
-            }
+               Skins.Clear();
+               foreach (var skin in filteredSkins)
+               {
+                    Skins.Add(skin);
+               }
+
+            
+
+            
 
             // Calculate the total price of visible skins and round to 2 decimal places
             TotalPriceLatestSell = Skins.Sum(skin => skin.PriceLatestSell);
@@ -229,8 +229,8 @@ namespace CS2itemViewer.ViewModel
         private bool _isCovertChecked = true;
         private bool _isContrabandChecked = true;
 
-        private bool _SortByPriceChecked = true;
-        private bool _SortByRarityChecked = true;
+        private bool _SortByPriceChecked = false;
+        private bool _SortByRarityChecked = false;
 
         public bool IsConsumerGradeChecked
         {
@@ -302,27 +302,27 @@ namespace CS2itemViewer.ViewModel
             }
         }
 
-        //public bool SortByPriceChecked 
-        //{
-        //    get => _SortByPriceChecked;
-        //    set
-        //    {
-        //        SetProperty(ref _SortByPriceChecked, value);
-        //        //SortByPriceCommand.Execute(this);
-        //        FilterSkins();
-        //    }
-        //}
+        public bool SortByPriceChecked
+        {
+            get => _SortByPriceChecked;
+            set
+            {
+                SetProperty(ref _SortByPriceChecked, value);
+                //SortByPriceCommand.Execute(this);
+                FilterSkins();
+            }
+        }
 
-        //public bool SortByRarityChecked
-        //{
-        //    get => _SortByRarityChecked;
-        //    set
-        //    {
-        //        SetProperty(ref _SortByRarityChecked, value);
-        //        //SortByRarityCommand.Execute(this);
-        //        FilterSkins();
-        //    }
-        //}
+        public bool SortByRarityChecked
+        {
+            get => _SortByRarityChecked;
+            set
+            {
+                SetProperty(ref _SortByRarityChecked, value);
+                //SortByRarityCommand.Execute(this);
+                FilterSkins();
+            }
+        }
 
 
 
