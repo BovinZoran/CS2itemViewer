@@ -138,64 +138,32 @@
 
                 <!-- sort by price -->
 
-                 <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="0">
-                     <CheckBox IsChecked="{Binding SortByPriceChecked, Mode=TwoWay}" />
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
+                     <!--<CheckBox IsChecked="{Binding SortByPriceChecked, Mode=TwoWay}" />-->
                      <Button 
-                         Command="{Binding SortByPriceCommand}" 
-                         Text="price asc" 
+                         Command="{Binding SortByPriceAscendingDescendingCommand}" 
+                         Text="{Binding PriceAscendingDescending}" 
+                         IsEnabled="{Binding IsNotBusy}"
                          VerticalOptions="Center" 
-                         Margin="0,0,0,0" />
+                         HorizontalOptions="Center"
+                         Margin="10,0,0,0"
+                         WidthRequest="160"/>
                  </StackLayout>
-
-
-                        <!--<StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="0" Margin="0,0,0,10" >
-                    <Button Command="{Binding SortByPriceCommand}" 
-                            Text="Sort by Price" 
-                            HorizontalOptions="Center" />
-                            
-                            
-                            
-                            <Switch
-                                Rotation="-90"
-                                HorizontalOptions="End"
-                                VerticalOptions="Center"
-                                IsToggled="{Binding IsSortByPriceAscending, Mode=TwoWay}">
-                                <Switch.Behaviors>
-                                    <toolkit:EventToCommandBehavior EventName="Toggled" Command="{Binding TogglePriceCommand}" />
-                                </Switch.Behaviors>
-                            </Switch>
-
-
-
-                            --><!--<Switch IsToggled="{Binding IsSortByPriceAscending}" 
-                            HorizontalOptions="End"
-                            VerticalOptions="Center"/>--><!--
-                </StackLayout>-->
 
                 <!-- sort by rarity -->
 
-
-                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="2">
-                            <CheckBox IsChecked="{Binding SortByRarityChecked, Mode=TwoWay}" />
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2">
+                            <!--<CheckBox IsChecked="{Binding SortByRarityChecked, Mode=TwoWay}" />-->
                             <Button 
-                                Command="{Binding SortByRarityCommand}"
-                                Text="rarity asc" 
+                                Command="{Binding SortByRarityAscendingDescendingCommand}"
+                                Text="{Binding RarityAscendingDescending}" 
                                 VerticalOptions="Center" 
-                                Margin="0,0,0,0" />
+                                HorizontalOptions="End"
+                                Margin="10,0,0,0" 
+                                WidthRequest="160"/>
                         </StackLayout>
 
-
-                        <!--<StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="2" Margin="0,0,0,10">
-                    <Button Command="{Binding SortByRarityCommand}" 
-                            Text="Sort by rarety" 
-                            HorizontalOptions="Center" />
-                    <Switch IsToggled="{Binding IsSortByRarityAscending}" 
-                            Rotation="-90"
-                            HorizontalOptions="End"
-                            VerticalOptions="Center"/>
-                </StackLayout>-->
-
-            </Grid>
+                    </Grid>
             
         </StackLayout>
 

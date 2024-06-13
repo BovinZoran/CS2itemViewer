@@ -27,6 +27,8 @@ namespace CS2itemViewer.ViewModel
         public ICommand SortByPriceCommand => new Command(SortByPrice);
         public ICommand SortByRarityCommand => new Command(SortByRarity);
 
+       
+
         public ICommand OpenLinkCommand { get; }
         public Command OnSearchedCommand { get; }
         public ICommand LoadLoginCommand { get; }
@@ -37,6 +39,8 @@ namespace CS2itemViewer.ViewModel
             _skinService = skinService;
             _connectivity = connectivity;
             allSkins = new List<Skin>();
+
+            
 
             OpenLinkCommand = new RelayCommand<string>(OpenLink);
 
@@ -50,6 +54,48 @@ namespace CS2itemViewer.ViewModel
             // Call the GetSkinsCommand command when the ViewModel is constructed
             GetSkinsCommand.Execute(null);
         }
+
+        public ICommand TestingCommand => new Command(TestCommand);
+        private void TestCommand()
+        {
+            Console.WriteLine("oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
+        }
+
+
+
+
+        public ICommand SortByPriceAscendingDescendingCommand => new Command(SortByPriceAscendingDescending);
+        private string _priceAscendingDescending = "Price Ascending";
+        private void SortByPriceAscendingDescending()
+        {
+           
+            IsSortByPriceAscending = !IsSortByPriceAscending;
+            PriceAscendingDescending = IsSortByPriceAscending ? "Price Descending" : "Price Ascending";
+
+        }
+        public string PriceAscendingDescending
+        {
+            get => _priceAscendingDescending;
+            set => SetProperty(ref _priceAscendingDescending, value);
+        }
+
+
+
+        public ICommand SortByRarityAscendingDescendingCommand => new Command(SortByRarityAscendingDescending);
+        private string _rarityAscendingDescending = "Rarity Ascending";
+        private void SortByRarityAscendingDescending()
+        {
+     
+                IsSortByRarityAscending = !IsSortByRarityAscending;
+                RarityAscendingDescending = IsSortByRarityAscending ? "Rarity Descending" : "Rarity Ascending";   
+
+        }
+        public string RarityAscendingDescending
+        {
+            get => _rarityAscendingDescending;
+            set => SetProperty(ref _rarityAscendingDescending, value);
+        }
+
 
 
 
@@ -159,6 +205,10 @@ namespace CS2itemViewer.ViewModel
             {
                 filteredSkins = filteredSkins.OrderBy(skin => GetRarityOrder(skin.Color)).ToList();
             }
+            else
+            {
+                filteredSkins = filteredSkins.OrderByDescending(skin => GetRarityOrder(skin.Color)).ToList();
+            }
 
             Skins.Clear();
             foreach (var skin in filteredSkins)
@@ -252,27 +302,27 @@ namespace CS2itemViewer.ViewModel
             }
         }
 
-        public bool SortByPriceChecked 
-        {
-            get => _SortByPriceChecked;
-            set
-            {
-                SetProperty(ref _SortByPriceChecked, value);
-                SortByPriceCommand.Execute(this);
-                FilterSkins();
-            }
-        }
+        //public bool SortByPriceChecked 
+        //{
+        //    get => _SortByPriceChecked;
+        //    set
+        //    {
+        //        SetProperty(ref _SortByPriceChecked, value);
+        //        //SortByPriceCommand.Execute(this);
+        //        FilterSkins();
+        //    }
+        //}
 
-        public bool SortByRarityChecked
-        {
-            get => _SortByRarityChecked;
-            set
-            {
-                SetProperty(ref _SortByRarityChecked, value);
-                SortByRarityCommand.Execute(this);
-                FilterSkins();
-            }
-        }
+        //public bool SortByRarityChecked
+        //{
+        //    get => _SortByRarityChecked;
+        //    set
+        //    {
+        //        SetProperty(ref _SortByRarityChecked, value);
+        //        //SortByRarityCommand.Execute(this);
+        //        FilterSkins();
+        //    }
+        //}
 
 
 
@@ -331,6 +381,8 @@ namespace CS2itemViewer.ViewModel
             }
             return false;
         }
+
+        
 
         public bool IsSortByPriceAscending
         {
