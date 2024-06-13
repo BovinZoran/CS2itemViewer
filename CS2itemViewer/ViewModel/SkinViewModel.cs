@@ -1,6 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-//using CoreML;
 using CS2itemViewer.Model;
 using CS2itemViewer.Services;
 using Newtonsoft.Json;

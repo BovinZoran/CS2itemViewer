@@ -37,10 +37,7 @@ namespace CS2itemViewer.Services
             // https://www.steamwebapi.com/steam/api/inventory?key=J1BAN31YCBSEJLLG&steam_id=76561199561947824
             // Use JsonSerializerOptions to handle case insensitivity if needed
 
-            //var sourceGenOptions = new JsonSerializerOptions//waarom dit
-            //{
-            //    PropertyNameCaseInsensitive = true
-            //};
+
 
             // Check if the skinList is already populated
             if (skinList?.Count > 0)
