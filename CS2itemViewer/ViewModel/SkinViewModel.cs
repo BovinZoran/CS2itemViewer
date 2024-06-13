@@ -179,6 +179,9 @@ namespace CS2itemViewer.ViewModel
         private bool _isCovertChecked = true;
         private bool _isContrabandChecked = true;
 
+        private bool _SortByPriceChecked = true;
+        private bool _SortByRarityChecked = true;
+
         public bool IsConsumerGradeChecked
         {
             get => _isConsumerGradeChecked;
@@ -248,6 +251,33 @@ namespace CS2itemViewer.ViewModel
                 FilterSkins();
             }
         }
+
+        public bool SortByPriceChecked 
+        {
+            get => _SortByPriceChecked;
+            set
+            {
+                SetProperty(ref _SortByPriceChecked, value);
+                SortByPriceCommand.Execute(this);
+                FilterSkins();
+            }
+        }
+
+        public bool SortByRarityChecked
+        {
+            get => _SortByRarityChecked;
+            set
+            {
+                SetProperty(ref _SortByRarityChecked, value);
+                SortByRarityCommand.Execute(this);
+                FilterSkins();
+            }
+        }
+
+
+
+
+
 
         private bool _isFilterMenuVisible;
         public bool IsFilterMenuVisible

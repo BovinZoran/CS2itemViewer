@@ -397,7 +397,7 @@
 
     <Style TargetType="Page" ApplyToDerivedTypes="True">
         <Setter Property="Padding" Value="0"/>
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource lichtGrijs}, Dark={StaticResource OffBlack}}" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource lichtGrijs}, Dark={StaticResource zwart}}" />
     </Style>
 
     <Style TargetType="Shell" ApplyToDerivedTypes="True">
@@ -406,7 +406,7 @@
         <!--title color here-->
         <!--<Setter Property="Shell.TitleColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource SecondaryDarkText}}" />-->
         <Setter Property="Shell.TitleColor" Value="{AppThemeBinding Light={StaticResource lichtBlauw}, Dark={StaticResource oranje}}" />
-        <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Light={StaticResource lichtGrijs}, Dark={StaticResource OffBlack}}" />
+        <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Light={StaticResource lichtGrijs}, Dark={StaticResource zwart}}" />
         <Setter Property="Shell.ForegroundColor" Value="{AppThemeBinding Light={StaticResource lichtBlauw}, Dark={StaticResource oranje}}" />
        
 

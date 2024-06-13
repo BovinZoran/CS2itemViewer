@@ -137,24 +137,63 @@
                 </StackLayout>
 
                 <!-- sort by price -->
-                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="0" Margin="0,0,0,10" >
+
+                 <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="0">
+                     <CheckBox IsChecked="{Binding SortByPriceChecked, Mode=TwoWay}" />
+                     <Button 
+                         Command="{Binding SortByPriceCommand}" 
+                         Text="price asc" 
+                         VerticalOptions="Center" 
+                         Margin="0,0,0,0" />
+                 </StackLayout>
+
+
+                        <!--<StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="0" Margin="0,0,0,10" >
                     <Button Command="{Binding SortByPriceCommand}" 
                             Text="Sort by Price" 
                             HorizontalOptions="Center" />
-                    <Switch IsToggled="{Binding IsSortByPriceAscending}" 
+                            
+                            
+                            
+                            <Switch
+                                Rotation="-90"
+                                HorizontalOptions="End"
+                                VerticalOptions="Center"
+                                IsToggled="{Binding IsSortByPriceAscending, Mode=TwoWay}">
+                                <Switch.Behaviors>
+                                    <toolkit:EventToCommandBehavior EventName="Toggled" Command="{Binding TogglePriceCommand}" />
+                                </Switch.Behaviors>
+                            </Switch>
+
+
+
+                            --><!--<Switch IsToggled="{Binding IsSortByPriceAscending}" 
                             HorizontalOptions="End"
-                            VerticalOptions="Center"/>
-                </StackLayout>
+                            VerticalOptions="Center"/>--><!--
+                </StackLayout>-->
 
                 <!-- sort by rarity -->
-                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="2" Margin="0,0,0,10">
+
+
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="2">
+                            <CheckBox IsChecked="{Binding SortByRarityChecked, Mode=TwoWay}" />
+                            <Button 
+                                Command="{Binding SortByRarityCommand}"
+                                Text="rarity asc" 
+                                VerticalOptions="Center" 
+                                Margin="0,0,0,0" />
+                        </StackLayout>
+
+
+                        <!--<StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="5" Grid.Column="2" Margin="0,0,0,10">
                     <Button Command="{Binding SortByRarityCommand}" 
                             Text="Sort by rarety" 
                             HorizontalOptions="Center" />
                     <Switch IsToggled="{Binding IsSortByRarityAscending}" 
+                            Rotation="-90"
                             HorizontalOptions="End"
                             VerticalOptions="Center"/>
-                </StackLayout>
+                </StackLayout>-->
 
             </Grid>
             
